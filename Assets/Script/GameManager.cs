@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//박성택의 class
+[System.Serializable]
+public class SeongTaek
+{
+    string str = "타인의 코드와 자기 코드가 섞이지 않도록 조심합시다";
+}
+
+
+
 
 
 public class GameManager : MonoBehaviour        //이 클래스는 public 하게 설정되었습니다. 다른 script에서도 이 class를 사용 할 수 있습니다.  
