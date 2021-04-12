@@ -35,11 +35,6 @@ public class GameManager : MonoBehaviour        //이 클래스는 public 하게
     }                                           //Privatenum의 수를 가져오는 public 함수 other script에서 접근가능 GameManager.instance.getPrivatenum();
 
 
-
-
-
-
-
     private void Awake()                        //Scene 이동을 하더라도 이 객체는 부서지지 않습니다. Scene 이동을 통해 어떤 식으로 객체가 부서지지 않는지 확인해봅시다. 
     {
         if (instance == null)
