@@ -34,5 +34,11 @@ public class Demolition_Collision : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(col.gameObject);
         }
+
+        //side와 충돌시 게임 오버됩니다.
+        else if(col.gameObject.tag == "Side")
+        {
+            GameManager.instance.GameOver = true;
+        }
     }
 }
