@@ -29,7 +29,7 @@ public class otherScript : MonoBehaviour        //버튼도 만들고 GameManage
     {
         if(n < 600)
         {
-            Debug.Log("그래 초당 이만큼이나 돌면 당연히 무거워지겠지....");
+            //Debug.Log("그래 초당 이만큼이나 돌면 당연히 무거워지겠지....");
             n++;
 
         }

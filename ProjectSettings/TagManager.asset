@@ -4,9 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Controlable
   - Collisionable
   - Not_Collisionable
+  - Controllable
+  - First
+  - Second
+  - Demolition_Notice
+  - Side
+  - Twins
+  - Controlable
+  - Rain
   layers:
   - Default
   - TransparentFX

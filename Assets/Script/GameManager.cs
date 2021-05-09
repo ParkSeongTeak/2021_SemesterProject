@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour        //이 클래스는 public 하게
     public static GameManager instance;         //이 클래스의 객체입니다. 우리는 이제부터 이 객체를 게임 매니저라고 생각하고 사용할 것입니다.
     public int Publicnum = 0;                   //예를 들어 other script에서 이 num의 값에 1을 더하고 싶다면 GameManager.instance.Publicnum += 1; 이라고 쓰면 게임 매니저 instance 객체의 num값에 1이 더해질 것입니다
 
+    public bool GameOver = false;               //게임이 오버되었는지 알아보는 부울값입니다.
+    public int Get_Point = 0;                   //게임 실행할 때 나타날 포인트입니다.
+    public bool Is_Fever = false;               //피버상태인지 알아보는 부울값입니다.
+    public int Twins_Count = 0;                 //Twins 큐브가 1번 쌓일때마다 1씩 증가하며 count가 2가 되면 2포인트를 획득합니다.
+    public bool IsFuncTwice = false;
 
     string PrefsPublicnum = "저장하기 위한 string입니다 아래SaveData()에서 어떻게 쓰는지 봅시다";
 
@@ -51,10 +56,7 @@ public class GameManager : MonoBehaviour        //이 클래스는 public 하게
             instance = this;
             DontDestroyOnLoad(instance);        
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     public void SaveData()                                      //변수 저장 방법입니다.
