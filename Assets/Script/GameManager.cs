@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour        //이 클래스는 public 하게
     public bool Is_Fever = false;               //피버상태인지 알아보는 부울값입니다.
     public int Twins_Count = 0;                 //Twins 큐브가 1번 쌓일때마다 1씩 증가하며 count가 2가 되면 2포인트를 획득합니다.
     public bool IsFuncTwice = false;
-    
-    
 
+
+    public float firstHeight = 0; // first큐브 y값 입니다.
 
 
     private void Awake()                        //Scene 이동을 하더라도 이 객체는 부서지지 않습니다. Scene 이동을 통해 어떤 식으로 객체가 부서지지 않는지 확인해봅시다. 

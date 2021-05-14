@@ -20,6 +20,8 @@ public class Twins_Collision : MonoBehaviour
                 col.gameObject.tag = "Second";
                 GameManager.instance.Twins_Count++;
                 GameManager.instance.IsFuncTwice = true;
+
+                
             }
 
             //충돌체의 태그가 First일때, 충돌체의 태그를 Second로 바꾸며 Twins_Count를 1 추가합니다.
@@ -44,6 +46,15 @@ public class Twins_Collision : MonoBehaviour
                 Twins_Cubes = GameObject.FindGameObjectsWithTag("Twins");
                 Twins_Cubes[0].gameObject.tag = "First";
                 Twins_Cubes[1].gameObject.tag = "First";
+
+                if (GameManager.instance.firstHeight == 0) // firstHeight값이 0이라면 position.y의 값을 넣어줌
+                {
+                    GameManager.instance.firstHeight = this.gameObject.transform.position.y;
+                }
+                else // firstHeight값이 있고 그 값이 position.y 값보다 작다면 position.y값으로 바꿔줌->만약 새로운 블록이 기존 firstHeight보다 작다면 값이 변하지 않음
+                {
+                    if (GameManager.instance.firstHeight < this.gameObject.transform.position.y) GameManager.instance.firstHeight = this.gameObject.transform.position.y;
+                }
             }
         }
     }

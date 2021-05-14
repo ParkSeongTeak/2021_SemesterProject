@@ -18,6 +18,9 @@ public class Controllable_Collision : MonoBehaviour
                     col.gameObject.tag = "Second";
                     this.gameObject.tag = "First";
                     GameManager.instance.Get_Point++;
+
+                    GameManager.instance.firstHeight = this.gameObject.transform.position.y;
+                    
                 }
 
                 //충돌체의 태그가 Second일때,  각 태그가 First, Second로 바뀌며 점수를 획득하지 않습니다.
