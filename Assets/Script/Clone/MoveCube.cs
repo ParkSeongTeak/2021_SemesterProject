@@ -14,7 +14,7 @@ public class MoveCube : MonoBehaviour
     {
         
         worldCube = Instantiate(prefabCube);
-        worldCube.transform.position = new Vector3(Random.Range(-1, 2)*13.0f, 20, 0);
+        worldCube.transform.position = Cubes[Random.Range(0,3)].transform.position;
         worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
 
     }
