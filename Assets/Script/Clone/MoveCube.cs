@@ -18,7 +18,8 @@ public class MoveCube : MonoBehaviour
     {
         start_true();
         cubenum = prefabCube.GetLength(0);
-        Debug.Log(cubenum);
+        Startsequence();
+        start = false;
     }
 
     void Startsequence()
@@ -54,6 +55,19 @@ public class MoveCube : MonoBehaviour
 
             }
 
+            //if (!isMove)
+            //{
+            //    worldCube.transform.position += new Vector3(xval, 0, 0);
+            //    if (worldCube.transform.position.x > 26.0f) xval = -xval;
+            //    else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
+            //}
+        }
+        
+    }
+    private void FixedUpdate()
+    {
+        if (!GameManager.instance.GameOver)
+        {
             if (!isMove)
             {
                 worldCube.transform.position += new Vector3(xval, 0, 0);
@@ -61,6 +75,5 @@ public class MoveCube : MonoBehaviour
                 else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
             }
         }
-        
     }
 }
