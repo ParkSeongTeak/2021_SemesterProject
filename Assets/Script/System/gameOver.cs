@@ -11,7 +11,7 @@ public class gameOver : MonoBehaviour
 
     public void Gameover()
     {
-        Debug.Log("함수진입성공");
+        
         GameManager.instance.GameOver = true;
         GameOverImg.SetActive(true);
         if (GameManager.instance.Get_Point > GameManager.instance.Get_Max_Point())
@@ -24,6 +24,7 @@ public class gameOver : MonoBehaviour
     public void ReStart()
     {
         GameManager.instance.Get_Point = 0;
+        GameManager.instance.firstHeight = 0;
         GameManager.instance.GameOver = false;
         SceneManager.LoadScene("Game");
     }
