@@ -13,7 +13,6 @@ public class UI : MonoBehaviour
                                                     //Button 만드는법 툴바 GameObject -> UI -> Button
     {
         SceneManager.LoadScene(menuScene);
-
     }
 
 

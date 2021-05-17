@@ -16,10 +16,7 @@ public class MoveCube : MonoBehaviour
 
     private void Start()
     {
-        start = true;
-        //worldCube = Instantiate(prefabCube);
-        //worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
-        //worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
+        start_true();
 
     }
 
@@ -43,21 +40,23 @@ public class MoveCube : MonoBehaviour
             Startsequence();
             start = false;
         }
-
-        if (Input.GetMouseButtonDown(0))
+        if (!GameManager.instance.GameOver)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
 
-            isMove = true;
-            worldCube.GetComponent<Rigidbody2D>().gravityScale = 4;
-            Invoke("start_true",3f);
-            
-        }
-        
-        if (!isMove)
-        {
-            worldCube.transform.position += new Vector3(xval, 0, 0);
-            if (worldCube.transform.position.x > 26.0f) xval = -0.1f;
-            else if (worldCube.transform.position.x < -26.0f) xval = 0.1f;
+                isMove = true;
+                worldCube.GetComponent<Rigidbody2D>().gravityScale = 4;
+                Invoke("start_true", 3f);
+
+            }
+
+            if (!isMove)
+            {
+                worldCube.transform.position += new Vector3(xval, 0, 0);
+                if (worldCube.transform.position.x > 26.0f) xval = -0.1f;
+                else if (worldCube.transform.position.x < -26.0f) xval = 0.1f;
+            }
         }
         
     }

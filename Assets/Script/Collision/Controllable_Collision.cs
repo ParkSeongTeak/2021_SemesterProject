@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Controllable_Collision : MonoBehaviour
 {
+    GameObject PointText;
+    private void Awake()
+    {
+        PointText = GameObject.Find("Point");
+    }
+
+
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (this.gameObject.tag == "Controllable")
@@ -18,7 +25,7 @@ public class Controllable_Collision : MonoBehaviour
                     col.gameObject.tag = "Second";
                     this.gameObject.tag = "First";
                     GameManager.instance.Get_Point++;
-
+                    PointText.GetComponent<ShowPoint>().Print_Text();
                     GameManager.instance.firstHeight = this.gameObject.transform.position.y;
                     
                 }

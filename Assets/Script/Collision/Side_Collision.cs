@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Side_Collision : MonoBehaviour
 {
+    GameObject GameOver;
+    private void Awake()
+    {
+        GameOver = GameObject.Find("EventSystem");
+    }
     public void OnCollisionEnter2D(Collision2D col)
     {
         Destroy(col.gameObject);
@@ -12,7 +17,8 @@ public class Side_Collision : MonoBehaviour
         {
             if (col.gameObject.tag == "First")
             {
-                GameManager.instance.GameOver = true;
+                Debug.Log("GameOVer");
+                GameOver.GetComponent<gameOver>().Gameover(); ;
             }
         }
     }
