@@ -9,23 +9,48 @@ public class MoveCube : MonoBehaviour
     public GameObject prefabCube;
     public GameObject[] Cubes;
     float xval = 0.1f;
-    bool isMove = false;
-    void Start()
+    bool isMove;
+    float gravity = 0;
+    bool start;
+
+
+    private void Start()
     {
-        
-        worldCube = Instantiate(prefabCube);
-        worldCube.transform.position = Cubes[Random.Range(0,3)].transform.position;
-        worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
+        start = true;
+        //worldCube = Instantiate(prefabCube);
+        //worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
+        //worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
 
     }
 
+    void Startsequence()
+    {
+        worldCube = Instantiate(prefabCube);
+        worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
+        worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
+        isMove = false;
+
+    }
+    void start_true()
+    {
+        start = true;
+    }
     // Update is called once per frame
     void Update()
     {
+        if (start)
+        {
+            Startsequence();
+            start = false;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
+
             isMove = true;
-            worldCube.GetComponent<Rigidbody2D>().gravityScale = 1;
+            worldCube.GetComponent<Rigidbody2D>().gravityScale = 4;
+            Invoke("start_true",3f);
+            
         }
 
 
