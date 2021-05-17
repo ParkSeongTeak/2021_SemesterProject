@@ -52,9 +52,7 @@ public class MoveCube : MonoBehaviour
             Invoke("start_true",3f);
             
         }
-
-
-
+        
         if (!isMove)
         {
             worldCube.transform.position += new Vector3(xval, 0, 0);
