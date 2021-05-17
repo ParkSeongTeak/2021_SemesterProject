@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        Screen.SetResolution(1440, 2960, true);
         max_Point = PlayerPrefs.GetInt(strMax_Point,0);
     }
 
