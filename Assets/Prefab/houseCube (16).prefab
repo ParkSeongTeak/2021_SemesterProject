@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5344450762158856655}
   - component: {fileID: 5344450762158856654}
   - component: {fileID: 5344450762158856652}
-  - component: {fileID: 3443606162180852285}
+  - component: {fileID: 1500032347286923624}
   m_Layer: 0
   m_Name: houseCube (16)
   m_TagString: Controllable
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &3443606162180852285
-BoxCollider2D:
+--- !u!60 &1500032347286923624
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5344450762158856651}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -141,6 +141,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.5, y: 2.62}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1442608, y: -1.0415794}
+      - {x: 0.98999995, y: -1.01}
+      - {x: 1.05, y: -0.93}
+      - {x: 1.0320365, y: -1.1621512}
+      - {x: -1.1449807, y: -1.1663885}
+      - {x: -1.5805926, y: -0.80527264}
+      - {x: -1.7853118, y: -0.01202464}
+      - {x: -1.5942442, y: 0.6439384}
+      - {x: -1.0295023, y: 1.2962272}
+      - {x: 1.1705428, y: 1.3030769}
+      - {x: 1.1707423, y: -0.474604}
+      - {x: 1.497048, y: -0.47709572}
+      - {x: 1.7211437, y: -0.4519595}
+      - {x: 1.743975, y: -1.0755723}
+      - {x: 1.5, y: -1.0699999}

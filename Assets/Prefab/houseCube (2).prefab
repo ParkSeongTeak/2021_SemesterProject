@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9193231189116496228}
   - component: {fileID: 9193231189116496229}
   - component: {fileID: 9193231189116496218}
-  - component: {fileID: 9193231189116496219}
   - component: {fileID: 9193231189116496216}
+  - component: {fileID: 259379194232337156}
   m_Layer: 0
   m_Name: houseCube (2)
   m_TagString: Controllable
@@ -101,13 +101,25 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &9193231189116496219
-BoxCollider2D:
+--- !u!114 &9193231189116496216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193231189116496217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &259379194232337156
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,7 +127,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 9193231189116496217}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -129,18 +141,18 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.75, y: 1.75}
-  m_EdgeRadius: 0
---- !u!114 &9193231189116496216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193231189116496217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Points:
+    m_Paths:
+    - - {x: 0.7817685, y: 0.7220743}
+      - {x: 0.435, y: 0.875}
+      - {x: -0.875, y: 0.875}
+      - {x: -0.8334989, y: 0.56577945}
+      - {x: -0.84268665, y: -0.20115677}
+      - {x: -0.84499997, y: -0.835}
+      - {x: -0.835, y: -0.875}
+      - {x: 0.835, y: -0.875}
+      - {x: 0.8323807, y: -0.84176815}
+      - {x: 0.836224, y: -0.09853714}
+      - {x: 0.838235, y: 0.5686062}
+      - {x: 0.89239424, y: 0.62676126}
+      - {x: 0.8879253, y: 0.6723804}

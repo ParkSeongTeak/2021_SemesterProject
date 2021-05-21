@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3291550951871170667}
   - component: {fileID: 3291550951871170666}
   - component: {fileID: 3291550951871170580}
-  - component: {fileID: 893253483293914671}
+  - component: {fileID: 4910311852121117605}
   m_Layer: 0
   m_Name: houseCube (11)
   m_TagString: Controllable
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3291550951871170583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.42, y: -43, z: 0}
+  m_LocalPosition: {x: 3.48, y: -36.86, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &893253483293914671
-BoxCollider2D:
+--- !u!60 &4910311852121117605
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3291550951871170583}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -141,6 +141,29 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7, y: 4.37}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.5, y: 0.435}
+      - {x: 3.48, y: 0.45499998}
+      - {x: -0.22161523, y: 0.43303227}
+      - {x: -0.21, y: 1.0749999}
+      - {x: -0.08, y: 1.115}
+      - {x: -0.01, y: 1.245}
+      - {x: -0.11, y: 1.3149999}
+      - {x: -1.575377, y: 2.185}
+      - {x: -1.8434676, y: 2.185}
+      - {x: -3.113462, y: 1.4412787}
+      - {x: -3.110324, y: 1.6665857}
+      - {x: -3.3857605, y: 1.64089}
+      - {x: -3.3943686, y: 1.3108253}
+      - {x: -3.5028477, y: 1.248042}
+      - {x: -3.5, y: 1.145}
+      - {x: -3.332913, y: 1.0849352}
+      - {x: -3.3272169, y: 0.44930464}
+      - {x: -3.4984488, y: 0.424308}
+      - {x: -3.483775, y: 0.4029614}
+      - {x: -3.5, y: -1.015}
+      - {x: -3.49, y: -2.065}
+      - {x: -3.5, y: -2.075}
+      - {x: -3.5, y: -2.185}
+      - {x: 3.5, y: -2.185}

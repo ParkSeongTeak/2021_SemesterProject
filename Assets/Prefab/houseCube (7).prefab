@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8364104189544135507}
   - component: {fileID: 8364104189544135508}
   - component: {fileID: 8364104189544135510}
-  - component: {fileID: 2995445043459867398}
+  - component: {fileID: 6482926948173976704}
   m_Layer: 0
   m_Name: houseCube (7)
   m_TagString: Controllable
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &2995445043459867398
-BoxCollider2D:
+--- !u!60 &6482926948173976704
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 8364104189544135511}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -141,6 +141,31 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7, y: 3.5}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.47, y: 1.1899999}
+      - {x: 3.5, y: 1.22}
+      - {x: 3.5, y: 1.35}
+      - {x: 3.48, y: 1.37}
+      - {x: 3.1799998, y: 1.43}
+      - {x: 2.86, y: 1.5}
+      - {x: 2.51, y: 1.5799999}
+      - {x: 2.37, y: 1.61}
+      - {x: 2.19, y: 1.65}
+      - {x: 1.87, y: 1.7199999}
+      - {x: 1.73, y: 1.75}
+      - {x: -3.5, y: 1.75}
+      - {x: -3.5, y: 1.5699999}
+      - {x: -3.46, y: 1.55}
+      - {x: -3.34, y: 1.53}
+      - {x: -3.28, y: 1.53}
+      - {x: -3.3, y: 1.15}
+      - {x: -3.34, y: 1.13}
+      - {x: -3.36, y: 1.11}
+      - {x: -3.36, y: -1.67}
+      - {x: -3.34, y: -1.6899999}
+      - {x: -3.32, y: -1.75}
+      - {x: 3.28, y: -1.75}
+      - {x: 3.32, y: -1.67}
+      - {x: 3.32, y: 1.13}
+      - {x: 3.33, y: 1.18}

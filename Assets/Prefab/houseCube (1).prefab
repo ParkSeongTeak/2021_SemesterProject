@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4199375716235612626}
   - component: {fileID: 4199375716235612627}
   - component: {fileID: 4199375716235612624}
-  - component: {fileID: 4199375716235612625}
   - component: {fileID: 4885961999125614398}
+  - component: {fileID: -2274164430747220727}
   m_Layer: 0
   m_Name: houseCube (1)
   m_TagString: Controllable
@@ -101,13 +101,25 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &4199375716235612625
-BoxCollider2D:
+--- !u!114 &4885961999125614398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199375716235612638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &-2274164430747220727
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,7 +127,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4199375716235612638}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -129,18 +141,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.75, y: 1.75}
-  m_EdgeRadius: 0
---- !u!114 &4885961999125614398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4199375716235612638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Points:
+    m_Paths:
+    - - {x: 0.79714227, y: 0.70020205}
+      - {x: 0.39173248, y: 0.8846939}
+      - {x: -0.875, y: 0.875}
+      - {x: -0.84914935, y: -0.475}
+      - {x: -0.84499997, y: -0.835}
+      - {x: -0.835, y: -0.875}
+      - {x: 0.835, y: -0.875}
+      - {x: 0.85499996, y: -0.84499997}
+      - {x: 0.84914935, y: -0.5246939}
+      - {x: 0.8588432, y: 0.656971}
