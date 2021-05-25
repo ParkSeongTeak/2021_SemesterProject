@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 2634955}
   - component: {fileID: 2634958}
   - component: {fileID: 2634957}
+  - component: {fileID: 2634959}
   - component: {fileID: 2634956}
   m_Layer: 5
   m_Name: Exit
@@ -204,21 +205,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1410111818}
-        m_TargetAssemblyTypeName: gameOver, Assembly-CSharp
-        m_MethodName: ReStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 320854866}
-        m_TargetAssemblyTypeName: Activation, Assembly-CSharp
-        m_MethodName: Active_False
+      - m_Target: {fileID: 534124409}
+        m_TargetAssemblyTypeName: StopGame, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -266,6 +255,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2634954}
   m_CullTransparentMesh: 0
+--- !u!114 &2634959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5213b58eaeba3d40b8c223a018493b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8438535
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +722,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &303123866
 PrefabInstance:
@@ -776,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1888222049876325206, guid: fc14245de2133e54f94e41743a94e687, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1888222049876325206, guid: fc14245de2133e54f94e41743a94e687, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1105,7 +1106,7 @@ Transform:
   m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &437393817
 PrefabInstance:
@@ -1144,7 +1145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271717389416341445, guid: 9962600edcba35640bb8f93f863f098b, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4271717389416341445, guid: 9962600edcba35640bb8f93f863f098b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1408,7 +1409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534124404
 GameObject:
@@ -1567,6 +1568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverImg: {fileID: 1733414315}
+  GameStopImg: {fileID: 534124404}
 --- !u!1 &718934617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,7 +1759,7 @@ RectTransform:
   - {fileID: 458461816}
   - {fileID: 534124405}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1801,7 +1803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7678499184336908594, guid: b44f716ff20b6864696c35200a4259aa, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7678499184336908594, guid: b44f716ff20b6864696c35200a4259aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1949,7 +1951,7 @@ Transform:
   m_LocalScale: {x: 30, y: 10, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1000169015
 GameObject:
@@ -2168,7 +2170,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1104762273
 PrefabInstance:
@@ -2207,7 +2209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271717389416341445, guid: 9962600edcba35640bb8f93f863f098b, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4271717389416341445, guid: 9962600edcba35640bb8f93f863f098b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2323,7 +2325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1410111822
 MonoBehaviour:
@@ -2338,6 +2340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverImg: {fileID: 1733414315}
+  GameStopImg: {fileID: 534124404}
 --- !u!1001 &1447569086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2375,7 +2378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271717389416341445, guid: 9962600edcba35640bb8f93f863f098b, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4271717389416341445, guid: 9962600edcba35640bb8f93f863f098b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2448,7 +2451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3033805624678159237, guid: 4e6cd728e202cd24881a1058d55605c3, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3033805624678159237, guid: 4e6cd728e202cd24881a1058d55605c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2713,7 +2716,7 @@ RectTransform:
   - {fileID: 312880009}
   - {fileID: 1733414316}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2839,7 +2842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034740285668648499, guid: b2ad3cb894fc65840a3ca33a58634278, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3034740285668648499, guid: b2ad3cb894fc65840a3ca33a58634278, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
