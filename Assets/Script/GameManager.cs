@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     int max_Point = 0;
     
     public float firstHeight = 0; // first큐브 y값 입니다.
+    public bool gameStop; //게임이 일시정지 상태인지 확인하는 부울값입니다.
     //PlayerPrefs
     string strMax_Point = "aenfl;sdkn4felknarvk8ld9fe";
 
