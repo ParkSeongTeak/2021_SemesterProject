@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class MoveCube : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,6 +15,14 @@ public class MoveCube : MonoBehaviour
     float gravity = 0;
     bool start;
     int cubenum;
+    int cubeBeforeNum;                          // 저번 큐브 넘버 기억
+    bool cube_Before2_4 = false;                 // 2*4 블록 중복막기  cubenum 기준 6 7 8 9 2*4큐브
+    bool cube_Before4_2 = false;                 // 4*2 블록 중복막기
+    const int Begin2_4 = 6;
+    const int End2_4 = 9;
+
+
+
 
     private void Start()
     {
@@ -22,11 +32,29 @@ public class MoveCube : MonoBehaviour
         start = false;
     }
 
-    void Startsequence()
+    void Startsequence()    //시작 시퀀스 블록을 조건에 따라 생성한다
     {
+        cubeBeforeNum = Random.Range(0, cubenum);
 
 
-        worldCube = Instantiate(prefabCube[Random.Range(0, cubenum)]);
+        if (cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) cube_Before2_4 = false;
+        else {
+            if (cube_Before2_4)
+            {
+                while (cube_Before2_4)
+                {  // cubenum 기준 6 7 8 9 2*4큐브
+                    cubeBeforeNum = Random.Range(0, cubenum);
+                    if (cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) cube_Before2_4 = false;
+
+                }
+            }
+            else
+            {
+                cube_Before2_4 = true;
+            }
+        }
+
+        worldCube = Instantiate(prefabCube[cubeBeforeNum]);
         worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
         worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
         isMove = false;
