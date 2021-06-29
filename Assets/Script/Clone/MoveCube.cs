@@ -67,14 +67,14 @@ public class MoveCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (start)
+        if (start && !GameManager.instance.isPause)
         {
             Startsequence();
             start = false;
         }
         if (!GameManager.instance.GameOver)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !GameManager.instance.isPause)
             {
 
                 isMove = true;
@@ -94,7 +94,7 @@ public class MoveCube : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!GameManager.instance.GameOver)
+        if (!GameManager.instance.GameOver && !GameManager.instance.isPause)
         {
             if (!isMove)
             {

@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4080020716194031228}
   - component: {fileID: 4080020716194031231}
-  - component: {fileID: 4080020716194031229}
   - component: {fileID: 6023272535844497455}
   - component: {fileID: 5662055610219360521}
   - component: {fileID: 6858096577274704877}
+  - component: {fileID: -7841529550289071133}
   m_Layer: 0
   m_Name: Obstacle (5)
-  m_TagString: Side
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4080020716194031229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4080020716194031489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc715406e94a38348a09ee105a7676ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &6023272535844497455
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -227,3 +215,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-7841529550289071133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080020716194031489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28701f737156db49b00f6c3a6548c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

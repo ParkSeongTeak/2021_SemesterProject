@@ -13,8 +13,13 @@ public class GameManager : MonoBehaviour
     public bool Is_Fever = false;               //피버상태인지 알아보는 부울값입니다.
     public int Twins_Count = 0;                 //Twins 큐브가 1번 쌓일때마다 1씩 증가하며 count가 2가 되면 2포인트를 획득합니다.
     public bool IsFuncTwice = false;
+    public bool isPause;                        //퍼즈상태인가?
+    
+    
     int max_Point = 0;
     
+
+
     public float firstHeight = 0; // first큐브 y값 입니다.
     public bool gameStop; //게임이 일시정지 상태인지 확인하는 부울값입니다.
     //PlayerPrefs
