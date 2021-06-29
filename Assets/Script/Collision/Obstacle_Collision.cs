@@ -16,6 +16,8 @@ public class Obstacle_Collision : MonoBehaviour
             if (col.gameObject.tag == "Controllable")
             {
                 //Destroy(col.gameObject);
+                Debug.Log("Obstacle");
+
                 GameOver.GetComponent<gameOver>().Gameover();
 
             }

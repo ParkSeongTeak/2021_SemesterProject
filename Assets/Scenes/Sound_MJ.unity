@@ -2156,6 +2156,7 @@ MonoBehaviour:
   Is_Fever: 0
   Twins_Count: 0
   IsFuncTwice: 0
+  isPause: 0
   firstHeight: 0
   gameStop: 0
 --- !u!4 &1045047274
@@ -2740,7 +2741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1733414316
 RectTransform:
   m_ObjectHideFlags: 0

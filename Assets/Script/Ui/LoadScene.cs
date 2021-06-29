@@ -12,7 +12,10 @@ public class UI : MonoBehaviour
                                                     //물론 이것저것까지는 해봅시다 ㅎㅎ;;
                                                     //Button 만드는법 툴바 GameObject -> UI -> Button
     {
+        GameManager.instance.GameOver = false;
+        GameManager.instance.gameStop = false;
         SceneManager.LoadScene(menuScene);
+        Time.timeScale = 1;
     }
 
 

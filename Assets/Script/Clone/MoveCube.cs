@@ -65,23 +65,18 @@ public class MoveCube : MonoBehaviour
         start = true;
     }
     // Update is called once per frame
-    void Update()
+
+    public void GetKeyDown()
     {
-        if (start && !GameManager.instance.isPause)
+        
+        if (!GameManager.instance.GameOver && !GameManager.instance.gameStop)
         {
-            Startsequence();
-            start = false;
-        }
-        if (!GameManager.instance.GameOver)
-        {
-            if (Input.GetMouseButtonDown(0) && !GameManager.instance.isPause)
-            {
 
-                isMove = true;
-                worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
-                Invoke("start_true", 2f);
+            isMove = true;
+            worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
+            Invoke("start_true", 2f);
 
-            }
+
 
             //if (!isMove)
             //{
@@ -90,11 +85,19 @@ public class MoveCube : MonoBehaviour
             //    else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
             //}
         }
-        
+    }
+    void Update()
+    {
+        if (start && !GameManager.instance.gameStop)
+        {
+            Startsequence();
+            start = false;
+        }
+
     }
     private void FixedUpdate()
     {
-        if (!GameManager.instance.GameOver && !GameManager.instance.isPause)
+        if (!GameManager.instance.GameOver && !GameManager.instance.gameStop)
         {
             if (!isMove)
             {
