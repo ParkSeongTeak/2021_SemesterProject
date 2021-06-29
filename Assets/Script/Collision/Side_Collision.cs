@@ -16,10 +16,10 @@ public class Side_Collision : MonoBehaviour
 
         if(GameManager.instance.Is_Fever == false)
         {
-            if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
+            if (col.gameObject.tag == "First" || col.gameObject.tag == "Second"|| col.gameObject.tag != "Controllable")
             {
                 
-                GameOver.GetComponent<gameOver>().Gameover(); ;
+                GameOver.GetComponent<gameOver>().Gameover(); 
             }
         }
     }
