@@ -8,6 +8,7 @@ public class MoveCube : MonoBehaviour
 {
     // Start is called before the first frame update
     GameObject worldCube;
+    public GameObject Demolitioncube;
     public GameObject[] prefabCube;
     public GameObject[] Cubes;
     float xval = 0.4f;
@@ -20,8 +21,11 @@ public class MoveCube : MonoBehaviour
     bool cube_Before4_2 = false;                 // 4*2 블록 중복막기
     const int Begin2_4 = 6;
     const int End2_4 = 9;
+    float DemolitionTimer = 0f;
+    bool Demolition = false;
 
-
+    const float DemolitionTimerNeedTime = 5f;
+    bool AfterDemolition = false;
 
 
     private void Start()
@@ -34,8 +38,10 @@ public class MoveCube : MonoBehaviour
 
     void Startsequence()    //시작 시퀀스 블록을 조건에 따라 생성한다
     {
+        
         cubeBeforeNum = Random.Range(0, cubenum);
-
+        
+            
 
         if (cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) cube_Before2_4 = false;
         else {
@@ -53,8 +59,20 @@ public class MoveCube : MonoBehaviour
                 cube_Before2_4 = true;
             }
         }
+        if (Demolition && !AfterDemolition)
+        {
+            worldCube = Instantiate(Demolitioncube);
+            AfterDemolition = true;
+            Demolition = false;
+        }
+        else
+        {
 
-        worldCube = Instantiate(prefabCube[cubeBeforeNum]);
+            worldCube = Instantiate(prefabCube[cubeBeforeNum]);
+            AfterDemolition = false;
+            
+        }
+
         worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
         worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
         isMove = false;
@@ -97,6 +115,22 @@ public class MoveCube : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
+        DemolitionTimer += Time.deltaTime;
+        if(DemolitionTimer > DemolitionTimerNeedTime)
+        {
+            DemolitionTimer = 0.0f;
+            if(Random.Range(0,2) == 0)
+            {
+                Demolition = true;
+            }
+            else
+            {
+                Demolition = false;
+
+            }
+        }
+
         if (!GameManager.instance.GameOver && !GameManager.instance.gameStop)
         {
             if (!isMove)

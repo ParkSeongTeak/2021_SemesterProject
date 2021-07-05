@@ -23,7 +23,8 @@ public class MakeObstacle : MonoBehaviour
 
     GameObject Object; 
 
-    int StartScore = 2;
+    int FirstScore = 2;
+    int SecondScore = 5;
     
     bool ReadyToMake;
     
@@ -58,8 +59,45 @@ public class MakeObstacle : MonoBehaviour
             ReadyToMake = false;
             if (!GameManager.instance.GameOver) //0.
             {
-                if (GameManager.instance.Get_Point >= StartScore)//1.
+                if(GameManager.instance.Get_Point >= SecondScore )//1.
                 {
+                    if (Random.Range(0, 2) == 1)  //4.왼쪽
+                    {
+                        int Rand = Random.Range(0, LeftPrefnum);
+                        Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[LeftStartPointnum-1].transform.position, LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.rotation);     //5.  //6.
+                        Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
+                        if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
+                        {
+                            rigidbody.AddForce(ForLeft * 40f, ForceMode2D.Impulse);
+                        }
+                        else                                                                           //로켓일때
+                        {
+                            rigidbody.AddForce(ForLeft * 80f, ForceMode2D.Impulse);
+
+                        }
+                    }
+                    else                           //4.오른쪽
+                    {
+                        int Rand = Random.Range(0, RightPrefnum);
+
+                        Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[Random.Range(0, RightStartPointnum)].transform.position, RightStartPoint[Random.Range(0, RightStartPointnum)].transform.rotation);     //5.  //6.
+                        Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
+                        if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
+                        {
+                            rigidbody.AddForce(ForRight * 40f, ForceMode2D.Impulse);
+                        }
+                        else                                                                           //로켓일때
+                        {
+                            rigidbody.AddForce(ForRight * 80f, ForceMode2D.Impulse);
+
+                        }
+                    }
+                }
+
+
+                if (GameManager.instance.Get_Point >= FirstScore)//1.
+                {
+
                     if (Random.Range(0, 2) == 1)  //4.왼쪽
                     {
                         int Rand = Random.Range(0, LeftPrefnum);
@@ -78,7 +116,7 @@ public class MakeObstacle : MonoBehaviour
                     else                           //4.오른쪽
                     {
                         int Rand = Random.Range(0, RightPrefnum);
-                        
+
                         Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[Random.Range(0, RightStartPointnum)].transform.position, RightStartPoint[Random.Range(0, RightStartPointnum)].transform.rotation);     //5.  //6.
                         Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
                         if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
@@ -91,7 +129,6 @@ public class MakeObstacle : MonoBehaviour
 
                         }
                     }
-
 
                 }
             }
@@ -106,14 +143,28 @@ public class MakeObstacle : MonoBehaviour
             if (timer > DelayTime)
             {
                 timer = 0.0f;
-                if (Random.Range(0, 2) == 0)
-                {
-                    ReadyToMake = true;
-                }
-                else
-                {
-                    ReadyToMake = false;
+                if (GameManager.instance.Get_Point >= SecondScore) {
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        ReadyToMake = true;
+                    }
+                    else
+                    {
+                        ReadyToMake = false;
 
+                    }
+                }
+                else if (GameManager.instance.Get_Point >= FirstScore)
+                {
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        ReadyToMake = true;
+                    }
+                    else
+                    {
+                        ReadyToMake = false;
+
+                    }
                 }
             }
         }

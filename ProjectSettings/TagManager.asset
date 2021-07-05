@@ -15,6 +15,7 @@ TagManager:
   - Rain
   - Undefined
   - Obstacle
+  - Demolition
   layers:
   - Default
   - TransparentFX
