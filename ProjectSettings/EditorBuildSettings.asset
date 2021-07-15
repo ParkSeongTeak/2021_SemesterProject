@@ -4,17 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: 9c80214c810327447b88bfffcb863744
-  - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 76770e60a746c654690fbcbecdbc90d8
-  - enabled: 1
-    path: Assets/Scenes/Sound_MJ.unity
-    guid: a6d2455a97ff9ce489373a0aeb09c27c
-  - enabled: 1
-    path: Assets/Scenes/jys_prectice scene.unity
-    guid: 567216b8044f0044ba322f9d6a6d43e9
-  m_configObjects: {}
+  m_Scenes: []
