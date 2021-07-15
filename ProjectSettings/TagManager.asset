@@ -4,7 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Shootable
+=======
+  - Collisionable
+  - Not_Collisionable
+  - Controllable
+  - First
+  - Second
+  - Demolition_Notice
+  - Side
+  - Twins
+  - Rain
+  - Undefined
+  - Obstacle
+  - Demolition
+>>>>>>> c7b47bf79d55b2635dc7c1bb5dfd0c27dddb37a4
   layers:
   - Default
   - TransparentFX

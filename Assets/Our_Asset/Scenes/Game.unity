@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7f38f6217a42544a233daf988fcc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Demolitioncube: {fileID: 845976357301602930, guid: 07232d3d27b00304c9f0afb99fb0fc7a, type: 3}
   prefabCube:
   - {fileID: 4199375716235612638, guid: b015b387e17905e47bd71450419addd5, type: 3}
   - {fileID: 9193231189116496217, guid: 12497ec1731e00541920469dcabcb5ea, type: 3}
