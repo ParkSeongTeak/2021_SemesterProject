@@ -19,8 +19,14 @@ public class MoveCube : MonoBehaviour
     int cubeBeforeNum;                          // 저번 큐브 넘버 기억
     bool cube_Before2_4 = false;                 // 2*4 블록 중복막기  cubenum 기준 6 7 8 9 2*4큐브
     bool cube_Before4_2 = false;                 // 4*2 블록 중복막기
+
+
     const int Begin2_4 = 6;
     const int End2_4 = 9;
+
+    const int Begin4_2 = 20;
+    const int End4_2 = 20;
+
     float DemolitionTimer = 0f;
     bool Demolition = false;
 
@@ -40,23 +46,47 @@ public class MoveCube : MonoBehaviour
     {
         
         cubeBeforeNum = Random.Range(0, cubenum);
-        
-            
 
-        if (cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) cube_Before2_4 = false;
-        else {
-            if (cube_Before2_4)
-            {
-                while (cube_Before2_4)
-                {  // cubenum 기준 6 7 8 9 2*4큐브
-                    cubeBeforeNum = Random.Range(0, cubenum);
-                    if (cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) cube_Before2_4 = false;
 
+
+        if ((cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) && (cubeBeforeNum < Begin4_2 || cubeBeforeNum > End4_2))
+        {
+            cube_Before2_4 = false;
+            cube_Before4_2 = false;
+
+        }
+        else
+        {
+            if ((cubeBeforeNum >= Begin2_4 && cubeBeforeNum <= End2_4)) {
+                if (cube_Before2_4)
+                {
+                    while (cube_Before2_4)
+                    {  // cubenum 기준 6 7 8 9 2*4큐브
+                        cubeBeforeNum = Random.Range(0, cubenum);
+                        if (cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) cube_Before2_4 = false;
+
+                    }
+                }
+                else
+                {
+                    cube_Before2_4 = true;
                 }
             }
-            else
+            else if ((cubeBeforeNum >= Begin4_2 && cubeBeforeNum <= End4_2))
             {
-                cube_Before2_4 = true;
+                if (cube_Before4_2)
+                {
+                    while (cube_Before4_2)
+                    {  // cubenum 기준 20 2*4큐브
+                        cubeBeforeNum = Random.Range(0, cubenum);
+                        if (cubeBeforeNum < Begin4_2 || cubeBeforeNum > End4_2) cube_Before4_2 = false;
+
+                    }
+                }
+                else
+                {
+                    cube_Before4_2 = true;
+                }
             }
         }
         if (Demolition && !AfterDemolition)
