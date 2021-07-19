@@ -4,22 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - Shootable
-=======
-  - Collisionable
-  - Not_Collisionable
-  - Controllable
-  - First
-  - Second
-  - Demolition_Notice
   - Side
-  - Twins
-  - Rain
-  - Undefined
-  - Obstacle
+  - First
   - Demolition
->>>>>>> c7b47bf79d55b2635dc7c1bb5dfd0c27dddb37a4
+  - Controllable
+  - Obstacle
+  - Second
   layers:
   - Default
   - TransparentFX
@@ -29,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - Lighting
-  - Ground
-  - Postprocessing
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -54,9 +44,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Fire
-    uniqueID: 3804908061
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
