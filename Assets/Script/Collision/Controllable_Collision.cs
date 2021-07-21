@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 public class Controllable_Collision : MonoBehaviour
 {
     GameObject PointText;
-    
+    GameObject GameOver;
+    const float Dtime = 0.5f;
+    float timer = 0.0f;
+    Vector3 current;
+    Vector3 now;
     bool Physics = true;
-    bool Move = true;
+    
     private void Awake()
-    {
-
+    {   
+        GameOver = GameObject.Find("EventSystem");
         PointText = GameObject.Find("Point");
     }
     
@@ -19,11 +23,26 @@ public class Controllable_Collision : MonoBehaviour
     {
         if (this.Physics)
         {
-            if(this.transform.position.y <  GameManager.instance.firstHeight - 60)
+            if(this.transform.position.y <  GameManager.instance.firstHeight - 55)
             {
 
-                this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-                this.Physics = false;
+                if (this.gameObject.tag == "Second")
+                {
+                    current = this.transform.position;
+                    timer += Time.deltaTime;
+                    if (timer >= Dtime)
+                    {
+                        timer = 0.0f;
+                        if (current == this.transform.position)
+                        {
+
+                            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                            this.Physics = false;
+                        }
+
+                    }
+
+                }
             }
 
         }   
@@ -34,6 +53,7 @@ public class Controllable_Collision : MonoBehaviour
     {
         if (this.gameObject.tag == "Controllable")
         {
+
             //피버상태가 아닐때의 함수들입니다.
             if (GameManager.instance.Is_Fever == false)
             {

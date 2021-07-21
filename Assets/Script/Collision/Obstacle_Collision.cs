@@ -21,6 +21,10 @@ public class Obstacle_Collision : MonoBehaviour
                 GameOver.GetComponent<gameOver>().Gameover();
 
             }
+            else
+            {
+                Destroy(this.gameObject);
+            }
 
         }
     }

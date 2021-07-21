@@ -35,7 +35,7 @@ public class MoveCube : MonoBehaviour
     const float DemolitionTimerNeedTime = 10f;
     bool AfterDemolition = false;
 
-
+    Vector3 Down = new Vector3(0, -1, 0);
     private void Start()
     {
         start_true();
@@ -124,6 +124,7 @@ public class MoveCube : MonoBehaviour
 
             isMove = true;
             worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
+            worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
             Invoke("start_true", 2f);
 
 
