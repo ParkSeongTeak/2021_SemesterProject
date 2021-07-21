@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 95e988682b376e444b63c9ff321386b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b97d7941469a1da4588c2a378bb9d0a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,15 +97,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000000
+  m_Mass: 100
   m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 50
   m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &5344450762158856652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5344450762158856651}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a6bede9951326804997321873830af4c, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -135,7 +135,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.5, y: 2.62}
+    oldSize: {x: 3.64, y: 2.7}
     newSize: {x: 1.75, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -143,18 +143,52 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.1442608, y: -1.0415794}
-      - {x: 0.98999995, y: -1.01}
-      - {x: 1.05, y: -0.93}
-      - {x: 1.0320365, y: -1.1621512}
-      - {x: -1.1449807, y: -1.1663885}
-      - {x: -1.5805926, y: -0.80527264}
-      - {x: -1.7853118, y: -0.01202464}
-      - {x: -1.5942442, y: 0.6439384}
-      - {x: -1.0295023, y: 1.2962272}
-      - {x: 1.1705428, y: 1.3030769}
-      - {x: 1.1707423, y: -0.474604}
-      - {x: 1.497048, y: -0.47709572}
-      - {x: 1.7211437, y: -0.4519595}
-      - {x: 1.743975, y: -1.0755723}
-      - {x: 1.5, y: -1.0699999}
+    - - {x: 0.85999995, y: -1.1}
+      - {x: 0.96999997, y: -1.09}
+      - {x: 1.13, y: -0.96999997}
+      - {x: 1.4699999, y: -0.95}
+      - {x: 1.4699999, y: -1.05}
+      - {x: 1.5899999, y: -1.18}
+      - {x: 1.6999999, y: -1.14}
+      - {x: 1.77, y: -1.05}
+      - {x: 1.73, y: -0.93}
+      - {x: 1.8199999, y: -0.9}
+      - {x: 1.8199999, y: -0.83}
+      - {x: 1.8, y: -0.74}
+      - {x: 1.8199999, y: -0.68}
+      - {x: 1.8199999, y: -0.56}
+      - {x: 1.68, y: -0.44}
+      - {x: 1.54, y: -0.38}
+      - {x: 1.43, y: -0.52}
+      - {x: 1.49, y: -0.71}
+      - {x: 1.24, y: -0.56}
+      - {x: 1.27, y: -0.47}
+      - {x: 1.3, y: -0.34}
+      - {x: 1.28, y: -0.02}
+      - {x: 1.23, y: 0.24}
+      - {x: 1.22, y: 1.13}
+      - {x: 1.15, y: 1.22}
+      - {x: 1.06, y: 1.27}
+      - {x: 0.19999999, y: 1.28}
+      - {x: 0.13, y: 1.35}
+      - {x: -0.58, y: 1.35}
+      - {x: -0.63, y: 1.27}
+      - {x: -1, y: 1.27}
+      - {x: -1.06, y: 1.25}
+      - {x: -1.49, y: 0.93}
+      - {x: -1.5899999, y: 0.81}
+      - {x: -1.73, y: 0.56}
+      - {x: -1.8199999, y: 0.21}
+      - {x: -1.8199999, y: -0.31}
+      - {x: -1.81, y: -0.35999998}
+      - {x: -1.74, y: -0.59999996}
+      - {x: -1.63, y: -0.82}
+      - {x: -1.4599999, y: -1.04}
+      - {x: -1.3199999, y: -1.09}
+      - {x: -1.04, y: -1.1}
+      - {x: -0.81, y: -1.3399999}
+      - {x: -0.77, y: -1.35}
+      - {x: -0.48, y: -1.35}
+      - {x: -0.35999998, y: -1.27}
+      - {x: -0.28, y: -1.13}
+      - {x: -0.19999999, y: -1.11}

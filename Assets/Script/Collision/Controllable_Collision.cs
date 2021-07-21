@@ -6,9 +6,27 @@ using UnityEngine.SceneManagement;
 public class Controllable_Collision : MonoBehaviour
 {
     GameObject PointText;
+    
+    bool Physics = true;
+    bool Move = true;
     private void Awake()
     {
+
         PointText = GameObject.Find("Point");
+    }
+    
+    private void Update()
+    {
+        if (this.Physics)
+        {
+            if(this.transform.position.y <  GameManager.instance.firstHeight - 60)
+            {
+
+                this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                this.Physics = false;
+            }
+
+        }   
     }
 
 

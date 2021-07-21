@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class cameraMoving : MonoBehaviour
 {
+
     float movingspeed = 0.5f;
     [SerializeField] GameObject maincamera;
 
@@ -17,5 +18,4 @@ public class cameraMoving : MonoBehaviour
         }
 
     }
-
 }

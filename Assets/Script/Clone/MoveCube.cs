@@ -30,7 +30,9 @@ public class MoveCube : MonoBehaviour
     float DemolitionTimer = 0f;
     bool Demolition = false;
 
-    const float DemolitionTimerNeedTime = 5f;
+
+    const int DemolitionStartHight = 10;
+    const float DemolitionTimerNeedTime = 10f;
     bool AfterDemolition = false;
 
 
@@ -146,20 +148,24 @@ public class MoveCube : MonoBehaviour
     private void FixedUpdate()
     {
 
-        DemolitionTimer += Time.deltaTime;
-        if(DemolitionTimer > DemolitionTimerNeedTime)
+        if (GameManager.instance.Get_Point >= DemolitionStartHight)
         {
-            DemolitionTimer = 0.0f;
-            if(Random.Range(0,2) == 0)
+            DemolitionTimer += Time.deltaTime;
+            if (DemolitionTimer > DemolitionTimerNeedTime)
             {
-                Demolition = true;
-            }
-            else
-            {
-                Demolition = false;
+                DemolitionTimer = 0.0f;
+                if (Random.Range(0, 2) == 0)
+                {
+                    Demolition = true;
+                }
+                else
+                {
+                    Demolition = false;
 
+                }
             }
         }
+
 
         if (!GameManager.instance.GameOver && !GameManager.instance.gameStop)
         {

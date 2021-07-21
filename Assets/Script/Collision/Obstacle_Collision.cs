@@ -13,7 +13,7 @@ public class Obstacle_Collision : MonoBehaviour
     {
         if (GameManager.instance.Is_Fever == false)
         {
-            if (col.gameObject.tag == "Controllable")
+            if (col.gameObject.tag != "Obstacle" && col.gameObject.tag != "First" && col.gameObject.tag != "Side" && col.gameObject.tag != "Second")
             {
                 //Destroy(col.gameObject);
                 Debug.Log("Obstacle");

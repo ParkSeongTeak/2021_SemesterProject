@@ -21,15 +21,17 @@ public class MakeObstacle : MonoBehaviour
     public GameObject[] LeftStartPoint;
     public GameObject[] RightStartPoint;
 
-    GameObject Object; 
+    GameObject Object;
+    GameObject MainCamera;
 
-    int FirstScore = 2;
-    int SecondScore = 5;
-    
+    Vector3 HightVec = new Vector3(0, 550, 0);
+
+    const int RandDenominator = 5;
+    //const int RocketRand = 5;
     bool ReadyToMake;
     
     float timer;
-    float DelayTime = 2.0f;
+    float DelayTime = 10.0f;
 
     int LeftPrefnum;
     int RightPrefnum;
@@ -42,6 +44,7 @@ public class MakeObstacle : MonoBehaviour
 
     private void Start()
     {
+        MainCamera = GameObject.Find("Main Camera");
         timer = 0.0f;
 
         LeftPrefnum = LeftPrefabCube.GetLength(0);
@@ -59,7 +62,8 @@ public class MakeObstacle : MonoBehaviour
             ReadyToMake = false;
             if (!GameManager.instance.GameOver) //0.
             {
-                if(GameManager.instance.Get_Point >= SecondScore )//1.
+
+                if(MainCamera.transform.localPosition.y < HightVec.y )//1.
                 {
                     if (Random.Range(0, 2) == 1)  //4.왼쪽
                     {
@@ -95,7 +99,7 @@ public class MakeObstacle : MonoBehaviour
                 }
 
 
-                if (GameManager.instance.Get_Point >= FirstScore)//1.
+                else //1.
                 {
 
                     if (Random.Range(0, 2) == 1)  //4.왼쪽
@@ -143,29 +147,16 @@ public class MakeObstacle : MonoBehaviour
             if (timer > DelayTime)
             {
                 timer = 0.0f;
-                if (GameManager.instance.Get_Point >= SecondScore) {
-                    if (Random.Range(0, 2) == 0)
-                    {
-                        ReadyToMake = true;
-                    }
-                    else
-                    {
-                        ReadyToMake = false;
-
-                    }
-                }
-                else if (GameManager.instance.Get_Point >= FirstScore)
+                if (Random.Range(0, RandDenominator) == 0)
                 {
-                    if (Random.Range(0, 2) == 0)
-                    {
-                        ReadyToMake = true;
-                    }
-                    else
-                    {
-                        ReadyToMake = false;
-
-                    }
+                    ReadyToMake = true;
                 }
+                else
+                {
+                    ReadyToMake = false;
+
+                }
+                
             }
         }
     }
