@@ -63,14 +63,14 @@ public class MakeObstacle : MonoBehaviour
             if (!GameManager.instance.GameOver) //0.
             {
 
-                if(MainCamera.transform.localPosition.y < HightVec.y )//1.
+                if(MainCamera.transform.localPosition.y < HightVec.y )//1.기준치 이하일때
                 {
                     if (Random.Range(0, 2) == 1)  //4.왼쪽
                     {
                         int Rand = Random.Range(0, LeftPrefnum);
                         Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[LeftStartPointnum-1].transform.position, LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.rotation);     //5.  //6.
                         Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
+                        if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
                         {
                             rigidbody.AddForce(ForLeft * 40f, ForceMode2D.Impulse);
                         }
@@ -86,7 +86,7 @@ public class MakeObstacle : MonoBehaviour
 
                         Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[Random.Range(0, RightStartPointnum)].transform.position, RightStartPoint[Random.Range(0, RightStartPointnum)].transform.rotation);     //5.  //6.
                         Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
+                        if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
                         {
                             rigidbody.AddForce(ForRight * 40f, ForceMode2D.Impulse);
                         }
@@ -104,10 +104,10 @@ public class MakeObstacle : MonoBehaviour
 
                     if (Random.Range(0, 2) == 1)  //4.왼쪽
                     {
-                        int Rand = Random.Range(0, LeftPrefnum);
+                        int Rand = Random.Range(4, LeftPrefnum);
                         Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.position, LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.rotation);     //5.  //6.
                         Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
+                        if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
                         {
                             rigidbody.AddForce(ForLeft * 40f, ForceMode2D.Impulse);
                         }
@@ -119,11 +119,11 @@ public class MakeObstacle : MonoBehaviour
                     }
                     else                           //4.오른쪽
                     {
-                        int Rand = Random.Range(0, RightPrefnum);
+                        int Rand = Random.Range(4, RightPrefnum);
 
                         Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[Random.Range(0, RightStartPointnum)].transform.position, RightStartPoint[Random.Range(0, RightStartPointnum)].transform.rotation);     //5.  //6.
                         Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand != 2)                                                                 //로켓 아닐때 == 새일때
+                        if (Rand <4 )                                                                 //로켓 아닐때 == 새일때
                         {
                             rigidbody.AddForce(ForRight * 40f, ForceMode2D.Impulse);
                         }

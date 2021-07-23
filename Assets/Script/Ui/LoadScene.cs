@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;                  //Scene이동 등을 위한 함수와 클래스정의
 
-public class UI : MonoBehaviour
+public class LoadScene : MonoBehaviour
 {
+    string exitScene = "StartScene";
     string menuScene = "Game";
     public void ToMenuScene()                       //함수는 잘 만들었습니다 하지만 이것만 만들고 버튼 열심히 눌러봐야 아무일도 안일어납니다
                                                     //툴바에 File -> Build Settings -> (추가하고싶은 Scene에 들어가서)Add Open Scenes를 클릭해준 후에야 이 함수가 동작합니다.
@@ -15,6 +16,14 @@ public class UI : MonoBehaviour
         GameManager.instance.GameOver = false;
         GameManager.instance.gameStop = false;
         SceneManager.LoadScene(menuScene);
+        Time.timeScale = 1;
+    }
+
+    public void ToExitScene()
+    {
+        GameManager.instance.GameOver = false;
+        GameManager.instance.gameStop = false;
+        SceneManager.LoadScene(exitScene);
         Time.timeScale = 1;
     }
 

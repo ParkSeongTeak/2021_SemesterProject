@@ -12,7 +12,7 @@ public class ShowPoint : MonoBehaviour
     private void Start()
     {
         Print_Text();
-        MaxPoint.text = "Max: " + GameManager.instance.Get_Max_Point();
+        MaxPoint.text = "" + GameManager.instance.Get_Max_Point();
     }
     
     public void Print_Text() {

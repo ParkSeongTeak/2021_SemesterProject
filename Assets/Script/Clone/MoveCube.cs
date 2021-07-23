@@ -11,11 +11,16 @@ public class MoveCube : MonoBehaviour
     public GameObject Demolitioncube;
     public GameObject[] prefabCube;
     public GameObject[] Cubes;
+    public GameObject BeforeCube;
+    
     float xval = 0.4f;
     bool isMove;
     float gravity = 0;
     bool start;
     int cubenum;
+    Vector3 StartPoint;
+    int cnt = 0;
+    //bool firstcube = true;
     int cubeBeforeNum;                          // 저번 큐브 넘버 기억
     bool cube_Before2_4 = false;                 // 2*4 블록 중복막기  cubenum 기준 6 7 8 9 2*4큐브
     bool cube_Before4_2 = false;                 // 4*2 블록 중복막기
@@ -24,15 +29,15 @@ public class MoveCube : MonoBehaviour
     const int Begin2_4 = 6;
     const int End2_4 = 9;
 
-    const int Begin4_2 = 20;
-    const int End4_2 = 20;
+    const int Begin4_2 = 11;
+    const int End4_2 = 11;
 
     float DemolitionTimer = 0f;
     bool Demolition = false;
 
 
     const int DemolitionStartHight = 10;
-    const float DemolitionTimerNeedTime = 10f;
+    const float DemolitionTimerNeedTime = 25f;
     bool AfterDemolition = false;
 
     Vector3 Down = new Vector3(0, -1, 0);
@@ -46,7 +51,9 @@ public class MoveCube : MonoBehaviour
 
     void Startsequence()    //시작 시퀀스 블록을 조건에 따라 생성한다
     {
-        
+
+        if(worldCube !=null)
+            BeforeCube = worldCube;
         cubeBeforeNum = Random.Range(0, cubenum);
 
 
@@ -106,9 +113,12 @@ public class MoveCube : MonoBehaviour
         }
 
         worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
+        StartPoint = worldCube.transform.position;
+        cnt = 0;
         worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
         isMove = false;
-
+        
+        
     }
     void start_true()
     {
@@ -118,23 +128,29 @@ public class MoveCube : MonoBehaviour
 
     public void GetKeyDown()
     {
-        
-        if (!GameManager.instance.GameOver && !GameManager.instance.gameStop)
+        if (BeforeCube == null)
         {
+            if (!GameManager.instance.GameOver && !GameManager.instance.gameStop && !isMove)
+            {
 
-            isMove = true;
-            worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
-            worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
-            Invoke("start_true", 2f);
+                isMove = true;
+                worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
+                worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
+                Invoke("start_true", 2f);
+                
+            }
+        }
+        else if (BeforeCube.gameObject.tag != "Controllable")
+        {
+            if (!GameManager.instance.GameOver && !GameManager.instance.gameStop && !isMove)
+            {
 
-
-
-            //if (!isMove)
-            //{
-            //    worldCube.transform.position += new Vector3(xval, 0, 0);
-            //    if (worldCube.transform.position.x > 26.0f) xval = -xval;
-            //    else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
-            //}
+                isMove = true;
+                worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
+                worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
+                Invoke("start_true", 2f);
+                
+            }
         }
     }
     void Update()
@@ -172,7 +188,18 @@ public class MoveCube : MonoBehaviour
         {
             if (!isMove)
             {
+
+
                 worldCube.transform.position += new Vector3(xval, 0, 0);
+                if(worldCube.transform.position == StartPoint)
+                {
+                    cnt++;
+                    if(cnt >= 6)
+                    {
+                        GetKeyDown();
+                    }
+                }
+
                 if (worldCube.transform.position.x > 26.0f) xval = -xval;
                 else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
             }
