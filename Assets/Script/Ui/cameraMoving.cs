@@ -18,9 +18,9 @@ public class cameraMoving : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.instance.firstHeight +4f >= maincamera.transform.position.y) //일단 임의의 숫자 넣음 -> 추후 192로 변경
+        if (GameManager.instance.firstHeight +3f >= maincamera.transform.position.y) //일단 임의의 숫자 넣음 -> 추후 192로 변경
         {
-            Vector3 cubePos = new Vector3(this.transform.position.x, GameManager.instance.firstHeight + 4f, this.transform.position.z); //역시 임의의 숫자 -> 추후 480으로 변경
+            Vector3 cubePos = new Vector3(this.transform.position.x, GameManager.instance.firstHeight + 3f, this.transform.position.z); //역시 임의의 숫자 -> 추후 480으로 변경
             CurrentP = transform.position;
             transform.position = Vector3.Lerp(transform.position, cubePos, Time.deltaTime * movingspeed);
             
