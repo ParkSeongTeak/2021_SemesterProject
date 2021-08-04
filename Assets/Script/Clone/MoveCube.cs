@@ -12,8 +12,13 @@ public class MoveCube : MonoBehaviour
     public GameObject[] prefabCube;
     public GameObject[] Cubes;
     public GameObject BeforeCube;
+
+    float[] xval = new float[5];
+    float Feverxval = 2.6f;
+    int[] AccelPoint = new int[5];
+    int idx = 0;
     
-    float xval = 0.4f;
+
     bool isMove;
     float gravity = 0;
     bool start;
@@ -43,6 +48,24 @@ public class MoveCube : MonoBehaviour
     Vector3 Down = new Vector3(0, -1, 0);
     private void Start()
     {
+        xval[0] = 0.6933f;
+        xval[1] = 0.832f;
+        xval[2] = 1.04f;
+        xval[3] = 1.386f;
+        xval[4] = 2.08f;
+        
+
+        //가속포인트
+        AccelPoint[0] = 10;
+        AccelPoint[1] = 20;
+        AccelPoint[2] = 30;
+        AccelPoint[3] = 40;
+        AccelPoint[4] = 2100000000;
+        
+
+
+
+
         start_true();
         cubenum = prefabCube.GetLength(0);
         Startsequence();
@@ -54,8 +77,24 @@ public class MoveCube : MonoBehaviour
 
         if(worldCube !=null)
             BeforeCube = worldCube;
-        cubeBeforeNum = Random.Range(0, cubenum);
+        
+        if (GameManager.instance.Is_Fever)                          //피버라면?
+        {
+            if (GameManager.instance.FeverCubeCount < 20)
+            {
+                GameManager.instance.FeverCubeCount += 1;
+            }
+            else
+            {
+                GameManager.instance.FeverEnd();
+            }
+        }
 
+        if (GameManager.instance.Get_Point >= AccelPoint[idx])
+        {
+            idx += 1;
+        }
+       
 
 
         if ((cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) && (cubeBeforeNum < Begin4_2 || cubeBeforeNum > End4_2))
@@ -134,9 +173,18 @@ public class MoveCube : MonoBehaviour
             {
 
                 isMove = true;
-                worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
-                worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
-                Invoke("start_true", 2f);
+                if (!GameManager.instance.Is_Fever)
+                {
+                    worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
+                    worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
+                    Invoke("start_true", 2f);
+                }
+                else//피버일때
+                {
+                    worldCube.GetComponent<Rigidbody2D>().gravityScale = 12 * 1.5f;
+                    worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f * 1.5f, ForceMode2D.Impulse);
+                    Invoke("start_true", 1.3f);
+                }
                 
             }
         }
@@ -144,12 +192,20 @@ public class MoveCube : MonoBehaviour
         {
             if (!GameManager.instance.GameOver && !GameManager.instance.gameStop && !isMove)
             {
-
                 isMove = true;
-                worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
-                worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
-                Invoke("start_true", 2f);
-                
+                if (!GameManager.instance.Is_Fever)
+                {
+                    worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
+                    worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f, ForceMode2D.Impulse);
+                    Invoke("start_true", 2f);
+                }
+                else//피버일때
+                {
+                    worldCube.GetComponent<Rigidbody2D>().gravityScale = 12 * 1.5f;
+                    worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f * 1.5f, ForceMode2D.Impulse);
+                    Invoke("start_true", 1.3f);
+                }
+
             }
         }
     }
@@ -190,7 +246,7 @@ public class MoveCube : MonoBehaviour
             {
 
 
-                worldCube.transform.position += new Vector3(xval, 0, 0);
+                worldCube.transform.position += new Vector3(xval[idx], 0, 0);
                 if(worldCube.transform.position == StartPoint)
                 {
                     cnt++;
@@ -199,9 +255,17 @@ public class MoveCube : MonoBehaviour
                         GetKeyDown();
                     }
                 }
+                if (!GameManager.instance.Is_Fever)
+                {
+                    if (worldCube.transform.position.x > 26.0f) xval[idx] = -xval[idx];
+                    else if (worldCube.transform.position.x < -26.0f) xval[idx] = Mathf.Abs(xval[idx]);
+                }
+                else
+                {
+                    if (worldCube.transform.position.x > 26.0f) Feverxval = -Feverxval;
+                    else if (worldCube.transform.position.x < -26.0f) Feverxval = Mathf.Abs(Feverxval);
 
-                if (worldCube.transform.position.x > 26.0f) xval = -xval;
-                else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
+                }
             }
         }
     }

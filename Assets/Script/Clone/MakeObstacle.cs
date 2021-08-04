@@ -20,6 +20,10 @@ public class MakeObstacle : MonoBehaviour
     public GameObject[] RightPrefabCube;
     public GameObject[] LeftStartPoint;
     public GameObject[] RightStartPoint;
+    public GameObject RightWarningBird;
+    public GameObject RightWarningRocket;
+    public GameObject LeftWarningBird;
+    public GameObject LeftWarningRocket;
 
     GameObject Object;
     GameObject MainCamera;
@@ -31,15 +35,21 @@ public class MakeObstacle : MonoBehaviour
     bool ReadyToMake;
     
     float timer;
-    float DelayTime = 10.0f;
+    float DelayTime = 3.0f;
 
     int LeftPrefnum;
     int RightPrefnum;
     int LeftStartPointnum;
     int RightStartPointnum;
+    int pointNum;
+    int Rand;
+    bool Left=false;
 
     Vector3 ForLeft = new Vector3(1, 0, 0);
     Vector3 ForRight = new Vector3(-1, 0, 0);
+    Vector3 LeftWarnigPos = new Vector3(20, 0, 0);
+    Vector3 RightWarnigPos = new Vector3(-20, 0, 0);
+
 
 
     private void Start()
@@ -65,74 +75,81 @@ public class MakeObstacle : MonoBehaviour
 
                 if(MainCamera.transform.localPosition.y < HightVec.y )//1.기준치 이하일때
                 {
-                    if (Random.Range(0, 2) == 1)  //4.왼쪽
+                    pointNum = Random.Range(0, LeftStartPointnum);  //시작 위치
+                    if(Random.Range(0, 2) == 0)                      //왼쪽 오른쪽
                     {
-                        int Rand = Random.Range(0, LeftPrefnum);
-                        Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[LeftStartPointnum-1].transform.position, LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.rotation);     //5.  //6.
-                        Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
-                        {
-                            rigidbody.AddForce(ForLeft * 40f, ForceMode2D.Impulse);
-                        }
-                        else                                                                           //로켓일때
-                        {
-                            rigidbody.AddForce(ForLeft * 80f, ForceMode2D.Impulse);
+                        Left = true;
+                    }
+                    else
+                    {
+                        Left = false;
 
+                    }
+                    Rand = Random.Range(0, LeftPrefnum);          //장애물 확정
+                    if (Left)   //왼쪽
+                    {
+                        if (Rand < 4)
+                            Instantiate(LeftWarningBird, LeftStartPoint[pointNum].transform.position + LeftWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
+                        else
+                        {
+                            Instantiate(LeftWarningRocket, LeftStartPoint[pointNum].transform.position + LeftWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
+                        }
+
+                    }
+                    else
+                    {
+                                //오른쪽
+                    }
+                    {
+                        if (Rand < 4)
+                            Instantiate(RightWarningBird, RightStartPoint[pointNum].transform.position + RightWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
+                        else
+                        {
+                            Instantiate(RightWarningRocket, RightStartPoint[pointNum].transform.position + RightWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
                         }
                     }
-                    else                           //4.오른쪽
-                    {
-                        int Rand = Random.Range(0, RightPrefnum);
+                    Invoke("MakeobstaclFirst", 3.0f);           //실 장애물 생성
 
-                        Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[Random.Range(0, RightStartPointnum)].transform.position, RightStartPoint[Random.Range(0, RightStartPointnum)].transform.rotation);     //5.  //6.
-                        Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
-                        {
-                            rigidbody.AddForce(ForRight * 40f, ForceMode2D.Impulse);
-                        }
-                        else                                                                           //로켓일때
-                        {
-                            rigidbody.AddForce(ForRight * 80f, ForceMode2D.Impulse);
-
-                        }
-                    }
                 }
 
 
-                else //1.
+                else                //1. 기중치 이상일때 로켓만
                 {
-
-                    if (Random.Range(0, 2) == 1)  //4.왼쪽
+                    pointNum = Random.Range(0, LeftStartPointnum);  //시작 위치
+                    if (Random.Range(0, 2) == 0)                      //왼쪽 오른쪽
                     {
-                        int Rand = Random.Range(4, LeftPrefnum);
-                        Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.position, LeftStartPoint[Random.Range(0, LeftStartPointnum)].transform.rotation);     //5.  //6.
-                        Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
-                        {
-                            rigidbody.AddForce(ForLeft * 40f, ForceMode2D.Impulse);
-                        }
-                        else                                                                           //로켓일때
-                        {
-                            rigidbody.AddForce(ForLeft * 80f, ForceMode2D.Impulse);
+                        Left = true;
+                    }
+                    else
+                    {
+                        Left = false;
 
+                    }
+                    Rand = Random.Range(4, LeftPrefnum);          //장애물 확정
+                    if (Left)   //왼쪽
+                    {
+                        if (Rand < 4)
+                            Instantiate(LeftWarningBird, LeftStartPoint[pointNum].transform.position + LeftWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
+                        else
+                        {
+                            Instantiate(LeftWarningRocket, LeftStartPoint[pointNum].transform.position + LeftWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
+                        }
+
+                    }
+                    else
+                    {
+                        //오른쪽
+                    }
+                    {
+                        if (Rand < 4)
+                            Instantiate(RightWarningBird, RightStartPoint[pointNum].transform.position + RightWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
+                        else
+                        {
+                            Instantiate(RightWarningRocket, RightStartPoint[pointNum].transform.position + RightWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장
                         }
                     }
-                    else                           //4.오른쪽
-                    {
-                        int Rand = Random.Range(4, RightPrefnum);
+                    Invoke("MakeobstaclSecond", 3.0f);
 
-                        Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[Random.Range(0, RightStartPointnum)].transform.position, RightStartPoint[Random.Range(0, RightStartPointnum)].transform.rotation);     //5.  //6.
-                        Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
-                        if (Rand <4 )                                                                 //로켓 아닐때 == 새일때
-                        {
-                            rigidbody.AddForce(ForRight * 40f, ForceMode2D.Impulse);
-                        }
-                        else                                                                           //로켓일때
-                        {
-                            rigidbody.AddForce(ForRight * 80f, ForceMode2D.Impulse);
-
-                        }
-                    }
 
                 }
             }
@@ -162,78 +179,62 @@ public class MakeObstacle : MonoBehaviour
     }
 
 
-    /*
-    
-    GameObject worldCube;
-    public GameObject[] prefabCube;
-    public GameObject[] StartPoint;//StartPoint
-    float xval = 0.4f;
-    bool isMove;
-    float gravity = 0;
-    bool start;
-    int cubenum;
-    
-    private void Start()
-    {
-        cubenum = prefabCube.GetLength(0);
-    }
-    
-    void Startsequence()
+    public void MakeobstaclFirst() //기준치 이하 장애물 생성 위치
     {
 
-
-        worldCube = Instantiate(prefabCube[Random.Range(0, cubenum)]);
-        worldCube.transform.position = StartPoint[Random.Range(0, 3)].transform.position;
-        worldCube.GetComponent<Rigidbody2D>().gravityScale = 0;
-        isMove = false;
-
-    }
-    void start_true()
-    {
-        start = true;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (start)
+        if (Left)  //4.왼쪽
         {
-            //Startsequence();
-            start = false;
-        }
-        if (!GameManager.instance.GameOver)
-        {
-            if (Input.GetMouseButtonDown(0))
+            
+            Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[pointNum].transform.position, LeftStartPoint[pointNum].transform.rotation);     //5.  //6.
+
+
+            Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
+            if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
             {
-
-                isMove = true;
-                worldCube.GetComponent<Rigidbody2D>().gravityScale = 12;
-                Invoke("start_true", 2f);
+                rigidbody.AddForce(ForLeft * 40f, ForceMode2D.Impulse);
+            }
+            else                                                                           //로켓일때
+            {
+                rigidbody.AddForce(ForLeft * 80f, ForceMode2D.Impulse);
 
             }
 
-            //if (!isMove)
-            //{
-            //    worldCube.transform.position += new Vector3(xval, 0, 0);
-            //    if (worldCube.transform.position.x > 26.0f) xval = -xval;
-            //    else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
-            //}
         }
-
-    }
-    private void FixedUpdate()
-    {
-        if (!GameManager.instance.GameOver)
+        else                           //4.오른쪽
         {
-            if (!isMove)
+            
+            Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[pointNum].transform.position, RightStartPoint[pointNum].transform.rotation);     //5.  //6.
+            Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
+            if (Rand < 4)                                                                 //로켓 아닐때 == 새일때
             {
-                worldCube.transform.position += new Vector3(xval, 0, 0);
-                if (worldCube.transform.position.x > 26.0f) xval = -xval;
-                else if (worldCube.transform.position.x < -26.0f) xval = Mathf.Abs(xval);
+                rigidbody.AddForce(ForRight * 40f, ForceMode2D.Impulse);
+            }
+            else                                                                           //로켓일때
+            {
+                rigidbody.AddForce(ForRight * 80f, ForceMode2D.Impulse);
+
             }
         }
     }
-    */
+
+    public void MakeobstaclSecond()    //기준치 이상일때
+    {
+        if (Left)  //4.왼쪽
+        {
+            Object = Instantiate(LeftPrefabCube[Rand], LeftStartPoint[pointNum].transform.position, LeftStartPoint[pointNum].transform.rotation);     //5.  //6.
+            Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
+            
+            rigidbody.AddForce(ForLeft * 80f, ForceMode2D.Impulse);
+        }
+        else                           //4.오른쪽
+        {
+         
+            Object = Instantiate(RightPrefabCube[Rand], RightStartPoint[pointNum].transform.position, RightStartPoint[pointNum].transform.rotation);     //5.  //6.
+            Rigidbody2D rigidbody = Object.GetComponent<Rigidbody2D>();
+            
+            rigidbody.AddForce(ForRight * 80f, ForceMode2D.Impulse);
+        }
+    }
 
 }
 
