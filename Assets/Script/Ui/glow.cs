@@ -20,7 +20,7 @@ public class glow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         
@@ -38,7 +38,7 @@ public class glow : MonoBehaviour
 
             if (this.color.a > 0)
             {
-                this.color.a -= 0.00392156862f;
+                this.color.a -= 0.03f;
                 spr.color = this.color;
 
                 Debug.Log("D" + spr.color.a);
@@ -49,7 +49,7 @@ public class glow : MonoBehaviour
         {
             if (this.color.a < 1)
             {
-                this.color.a += 0.00392156862f;
+                this.color.a += 0.01f;
                 spr.color = this.color;
                 Debug.Log("Up" + spr.color.a);
 

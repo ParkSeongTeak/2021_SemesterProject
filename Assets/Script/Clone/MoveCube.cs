@@ -190,7 +190,7 @@ public class MoveCube : MonoBehaviour
                 
             }
         }
-        else if (BeforeCube.gameObject.tag != "Controllable")
+        else if (BeforeCube.gameObject.tag != "Controllable" )
         {
             if (!GameManager.instance.GameOver && !GameManager.instance.gameStop && !isMove)
             {
@@ -210,6 +210,7 @@ public class MoveCube : MonoBehaviour
 
             }
         }
+       
     }
     void Update()
     {

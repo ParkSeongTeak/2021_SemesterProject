@@ -97,9 +97,7 @@ public class MakeObstacle : MonoBehaviour
 
                     }
                     else
-                    {
-                                //오른쪽
-                    }
+                   
                     {
                         if (Rand < 4)
                             Instantiate(RightWarningBird, RightStartPoint[pointNum].transform.position + RightWarnigPos, LeftStartPoint[pointNum].transform.rotation);     //경고문 등장

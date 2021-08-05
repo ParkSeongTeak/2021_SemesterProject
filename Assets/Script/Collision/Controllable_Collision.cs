@@ -57,6 +57,7 @@ public class Controllable_Collision : MonoBehaviour
                     }
                     else
                     {
+                        this.gameObject.tag = "First";
                         Destroy(this.gameObject);
                         GameManager.instance.FeverMissCount += 1;
                         if (GameManager.instance.FeverMissCount >= 3)
