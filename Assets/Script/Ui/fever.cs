@@ -2,28 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeverSystem : MonoBehaviour
+public class fever : MonoBehaviour
 {
-    private void Start()
-    {
-        GameManager.instance.Fever = this.gameObject;
-        GameManager.instance.GameOver = false;
-        GameManager.instance.isPause = false;
-        Time.timeScale = 1;
-    }
-
-    public GameObject FeverBG;
-    
-    public void FeverStart()
-    {
-        FeverBG.SetActive(true);
-    }
-    public void FeverEnd()
-    {
-        FeverBG.SetActive(false);
-
-    }
-    /*
     GameObject[] FeverBG;
     const int bgImgNum = 5;
     const float NeedTime = 0.3f;    // 한번 바뀔 시간
@@ -35,7 +15,7 @@ public class FeverSystem : MonoBehaviour
         GameManager.instance.Fever = this.gameObject;
 
         FeverBG = new GameObject[bgImgNum];
-        for(int i=0;i< bgImgNum; i++)
+        for (int i = 0; i < bgImgNum; i++)
         {
             FeverBG[i] = transform.GetChild(i).gameObject;
         }
@@ -51,12 +31,12 @@ public class FeverSystem : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= NeedTime)
+        if (timer >= NeedTime)
         {
             timer = 0f;
             FeverBG[idx].SetActive(false);
             idx++;
-            if(idx>= bgImgNum)
+            if (idx >= bgImgNum)
             {
                 idx = 0;
             }
@@ -65,6 +45,4 @@ public class FeverSystem : MonoBehaviour
         }
 
     }
-    */
-
 }

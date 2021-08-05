@@ -74,8 +74,9 @@ public class MoveCube : MonoBehaviour
 
     void Startsequence()    //시작 시퀀스 블록을 조건에 따라 생성한다
     {
+        cubeBeforeNum = Random.Range(0, cubenum);
 
-        if(worldCube !=null)
+        if (worldCube !=null)
             BeforeCube = worldCube;
         
         if (GameManager.instance.Is_Fever)                          //피버라면?
@@ -89,14 +90,14 @@ public class MoveCube : MonoBehaviour
                 GameManager.instance.FeverEnd();
             }
         }
+        
 
         if (GameManager.instance.Get_Point >= AccelPoint[idx])
         {
             idx += 1;
         }
-       
 
-
+        
         if ((cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) && (cubeBeforeNum < Begin4_2 || cubeBeforeNum > End4_2))
         {
             cube_Before2_4 = false;
@@ -159,6 +160,7 @@ public class MoveCube : MonoBehaviour
         
         
     }
+
     void start_true()
     {
         start = true;
@@ -245,9 +247,16 @@ public class MoveCube : MonoBehaviour
             if (!isMove)
             {
 
+                if (!GameManager.instance.Is_Fever)
+                {
+                    worldCube.transform.position += new Vector3(xval[idx], 0, 0);
+                }
+                else
+                {
+                    worldCube.transform.position += new Vector3(Feverxval, 0, 0);
 
-                worldCube.transform.position += new Vector3(xval[idx], 0, 0);
-                if(worldCube.transform.position == StartPoint)
+                }
+                if (worldCube.transform.position == StartPoint)
                 {
                     cnt++;
                     if(cnt >= 6)

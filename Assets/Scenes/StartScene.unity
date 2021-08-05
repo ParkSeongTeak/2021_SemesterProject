@@ -153,12 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f4f93ebc884aa40acead462daf0fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fever: {fileID: 0}
   GameOver: 0
   Get_Point: 0
   Is_Fever: 0
   Twins_Count: 0
   IsFuncTwice: 0
-  isPause: 0
+  isPause: 1
+  FeverCubeCount: 0
+  FeverMissCount: 0
   firstHeight: 0
   gameStop: 0
 --- !u!222 &188572476

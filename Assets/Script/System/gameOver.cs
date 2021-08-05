@@ -24,16 +24,17 @@ public class gameOver : MonoBehaviour
     }
     public void ReStart()
     {
-        if (GameManager.instance.Get_Point > GameManager.instance.Get_Max_Point())
-        {
-            GameManager.instance.SaveData();
-        }
+        Time.timeScale = 1;
+        
+        
+        
         GameManager.instance.Get_Point = 0;
         GameManager.instance.firstHeight = 0;
+        
         GameManager.instance.GameOver = false;
         GameManager.instance.gameStop = false;
 
         SceneManager.LoadScene("Game");
-        Time.timeScale = 1;
+
     }
 }

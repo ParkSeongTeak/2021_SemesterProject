@@ -35,7 +35,7 @@ public class MakeObstacle : MonoBehaviour
     bool ReadyToMake;
     
     float timer;
-    float DelayTime = 3.0f;
+    float DelayTime = 10.0f;
 
     int LeftPrefnum;
     int RightPrefnum;
