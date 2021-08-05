@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         //이 클래스의 객체입니다. 우리는 이제부터 이 객체를 게임 매니저라고 생각하고 사용할 것입니다.
+    GameObject Fever;
     public bool GameOver = false;               //게임이 오버되었는지 알아보는 부울값입니다.
     public int Get_Point = 0;                   //게임 실행할 때 나타날 포인트입니다.
     public bool Is_Fever = false;               //피버상태인지 알아보는 부울값입니다.
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
     
     
     int max_Point = 0;
-    
+    public int FeverCubeCount = 0;
+    public int FeverMissCount = 0;
 
 
     public float firstHeight = 0; // first큐브 y값 입니다.
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-
+        Fever = GameObject.Find("Fever");
         Screen.SetResolution(1440, 2960, true);
         max_Point = PlayerPrefs.GetInt(strMax_Point,0);
     }
@@ -52,6 +54,20 @@ public class GameManager : MonoBehaviour
         return max_Point;
     }
 
-    
+
+    public void FeverStart()
+    {
+        Fever.SetActive(true);
+        Is_Fever = true;
+        FeverCubeCount = 0;
+        FeverMissCount = 0;
+    }
+    public void FeverEnd()
+    {
+        Fever.SetActive(false);
+        Is_Fever = false;
+        FeverCubeCount = 0;
+        FeverMissCount = 0;
+    }
 
 }

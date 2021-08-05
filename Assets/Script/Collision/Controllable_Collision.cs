@@ -48,10 +48,24 @@ public class Controllable_Collision : MonoBehaviour
 
                 }
 
+                
                 if(this.transform.position.y < FirstHeight - 85*fortest)
                 {
-                    GameOver.GetComponent<gameOver>().Gameover();
+                    if (!GameManager.instance.Is_Fever)
+                    {
+                        GameOver.GetComponent<gameOver>().Gameover();
+                    }
+                    else
+                    {
+                        Destroy(this.gameObject);
+                        GameManager.instance.FeverMissCount += 1;
+                        if (GameManager.instance.FeverMissCount >= 3)
+                        {
+                            GameManager.instance.FeverEnd();
+                        }
+                    }
                 }
+
             }
 
         }
@@ -85,6 +99,15 @@ public class Controllable_Collision : MonoBehaviour
                     
                 }
 
+                if(GameManager.instance.Get_Point == 15)
+                {
+                    GameManager.instance.FeverStart();
+                }
+                if(GameManager.instance.Get_Point != 0 && GameManager.instance.Get_Point % 100 == 0)
+                {
+                    GameManager.instance.FeverStart();
+                }
+
                 //충돌체의 태그가 Second일때,  각 태그가 First, Second로 바뀌며 점수를 획득하지 않습니다.
                 /* //난이도 문제로 삭제
                 else if (col.gameObject.tag == "Second")
@@ -110,13 +133,15 @@ public class Controllable_Collision : MonoBehaviour
                     this.gameObject.tag = "First";
                     GameManager.instance.Get_Point++;
                 }
-
+                /*
                 //충돌체의 태그가 Second일때,  각 태그가 First, Second로 바뀌며 점수를 획득하지 않습니다.
                 else if (col.gameObject.tag == "Second")
                 {
                     col.gameObject.tag = "Second";
                     this.gameObject.tag = "First";
                 }
+                */
+
             }
         }
     }
