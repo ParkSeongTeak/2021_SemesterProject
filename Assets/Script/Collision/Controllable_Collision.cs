@@ -108,19 +108,14 @@ public class Controllable_Collision : MonoBehaviour
                 {
                     GameManager.instance.FeverStart();
                 }
-
                 
-                else if (col.gameObject.tag == "Side")
-                {
-                    GameManager.instance.GameOver = true;
-                }
             }
 
             //피버상태일때의 함수입니다.
             else
             {
                 //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
-                if (col.gameObject.tag == "First")
+                if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
                 {
                     col.gameObject.tag = "Second";
                     this.gameObject.tag = "First";

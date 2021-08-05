@@ -19,7 +19,7 @@ public class MoveCube : MonoBehaviour
     int idx = 0;
     
 
-    bool isMove;
+    bool isMove;                                //
     float gravity = 0;
     bool start;
     int cubenum;
@@ -185,7 +185,7 @@ public class MoveCube : MonoBehaviour
                 {
                     worldCube.GetComponent<Rigidbody2D>().gravityScale = 12 * 1.5f;
                     worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f * 1.5f, ForceMode2D.Impulse);
-                    Invoke("start_true", 1.3f);
+                    Invoke("start_true", 0.8f);
                 }
                 
             }
@@ -205,7 +205,7 @@ public class MoveCube : MonoBehaviour
                 {
                     worldCube.GetComponent<Rigidbody2D>().gravityScale = 12 * 1.5f;
                     worldCube.GetComponent<Rigidbody2D>().AddForce(Down * 500f * 1.5f, ForceMode2D.Impulse);
-                    Invoke("start_true", 1.3f);
+                    Invoke("start_true", 0.8f);
                 }
 
             }

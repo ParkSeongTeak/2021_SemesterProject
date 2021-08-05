@@ -26,7 +26,7 @@ public class glow : MonoBehaviour
         
         this.timer += Time.deltaTime;
         this.glowtimer += Time.deltaTime;
-        if (this.glowtimer > 0.5f)
+        if (this.glowtimer >= 0.5f)
         {
             this.glowtimer = 0.0f;
             this.up = !this.up;
@@ -49,7 +49,7 @@ public class glow : MonoBehaviour
         {
             if (this.color.a < 1)
             {
-                this.color.a += 0.01f;
+                this.color.a += 0.03f;
                 spr.color = this.color;
                 Debug.Log("Up" + spr.color.a);
 
