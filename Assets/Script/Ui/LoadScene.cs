@@ -21,6 +21,10 @@ public class LoadScene : MonoBehaviour
 
     public void ToExitScene()
     {
+        GameManager.instance.Get_Point = 0;
+        GameManager.instance.firstHeight = 0;
+
+
         GameManager.instance.GameOver = false;
         GameManager.instance.gameStop = false;
         SceneManager.LoadScene(exitScene);

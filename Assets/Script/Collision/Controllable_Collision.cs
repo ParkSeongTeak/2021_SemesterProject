@@ -14,6 +14,12 @@ public class Controllable_Collision : MonoBehaviour
     bool Physics = true;
     bool currentcheck = false;
 
+    bool FeverEnd = false;
+    //float R, G, B;
+    bool Rup , Gup , Bup;
+    SpriteRenderer spr;
+    Color color;
+
 
     float fortest = 1f;
     private void Awake()
@@ -21,7 +27,36 @@ public class Controllable_Collision : MonoBehaviour
         GameOver = GameObject.Find("EventSystem");
         PointText = GameObject.Find("Point");
     }
-    
+    private void Start()
+    {
+        this.Rup = true;
+        this.Gup = true;
+        this.Bup = true;
+        spr = this.gameObject.GetComponent<SpriteRenderer>();
+
+        //Debug.Log(this.color.r + this.color.g + this.color.b);
+        if (GameManager.instance.Is_Fever == true)
+        {
+            this.color.r = 1.0f;
+            this.color.g = 0.5f;
+            this.color.b = 0.0f;
+            this.color.a = 1.0f; 
+        
+            spr.color = this.color;
+            FeverEnd = true;
+        }
+        Debug.Log(spr.color.r+ " " + spr.color.g + " " + spr.color.b);
+    }
+    void SortColor()
+    {
+        color.r = 1.0f;
+        color.g = 1.0f;
+        color.b = 1.0f;
+        color.a = 1.0f;
+
+        spr.color = this.color;
+
+    }
     private void Update()
     {
         float FirstHeight = GameManager.instance.firstHeight;
@@ -80,12 +115,67 @@ public class Controllable_Collision : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if(FeverEnd != GameManager.instance.Is_Fever)
+        {
+            SortColor();
+            FeverEnd = GameManager.instance.Is_Fever;
+        }
+
+        if(this.gameObject.tag == "Controllable" && GameManager.instance.Is_Fever)
+        {
+
+            if (this.Rup)
+            {
+                this.color.r += 0.02f;
+                if (this.color.r >= 0.9f)
+                    this.Rup = !this.Rup;
+            }
+            else 
+            {
+                this.color.r -= 0.02f;
+                if (this.color.r <= 0.1f)
+                    this.Rup = !this.Rup;
+            }
+
+            if (this.Gup)
+            {
+                this.color.g += 0.02f;
+                if (this.color.g >= 0.9f)
+                    this.Gup = !this.Gup;
+            }
+            else
+            {
+                this.color.g -= 0.02f;
+                if (this.color.g <= 0.1f)
+                    this.Gup = !this.Gup;
+            }
+
+            if (this.Bup)
+            {
+                this.color.b += 0.02f;
+                if (this.color.b >= 0.9f)
+                    this.Bup = !this.Bup;
+            }
+            else
+            {
+                this.color.b -= 0.02f;
+                if (this.color.b <= 0.1f)
+                    this.Bup = !this.Bup;
+            }
+            spr.color = this.color;
+
+        }
+    }
+
+    
 
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (this.gameObject.tag == "Controllable")
         {
-
+            SortColor();
             //피버상태가 아닐때의 함수들입니다.
             if (GameManager.instance.Is_Fever == false)
             {
