@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int Twins_Count = 0;                 //Twins 큐브가 1번 쌓일때마다 1씩 증가하며 count가 2가 되면 2포인트를 획득합니다.
     public bool IsFuncTwice = false;
     public bool isPause = false;                        //퍼즈상태인가?
-    
+    public float Sound = 0f;
     
     int max_Point = 0;
     public int FeverCubeCount = 0;
@@ -29,10 +29,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()                        //Scene 이동을 하더라도 이 객체는 부서지지 않습니다. Scene 이동을 통해 어떤 식으로 객체가 부서지지 않는지 확인해봅시다. 
     {
-        if (instance == null)
+        var obj = FindObjectsOfType<GameManager>();
+        if (obj.Length == 1)
         {
             instance = this;
             DontDestroyOnLoad(instance);        
+        }
+        else {
+            Destroy(this.gameObject);
         }
         max_Point = PlayerPrefs.GetInt(strMax_Point, 0);
 
@@ -69,5 +73,12 @@ public class GameManager : MonoBehaviour
         FeverCubeCount = 0;
         FeverMissCount = 0;
     }
-
+    public void SaveSound(float sound)
+    {
+        PlayerPrefs.SetFloat("SoundSave", sound);
+    }
+    public float GetSound()
+    {
+        return PlayerPrefs.GetFloat("SoundSave", 0f);
+    }
 }
