@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de2ba7a2ae107d44b78f2a8a948da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FeverEffect: {fileID: 2567597982814327257, guid: 88179b47557478246a6f6e597762e753,
+    type: 3}
 --- !u!60 &1398326125196376187
 PolygonCollider2D:
   m_ObjectHideFlags: 0

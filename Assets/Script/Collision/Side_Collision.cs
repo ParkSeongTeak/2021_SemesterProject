@@ -11,8 +11,8 @@ public class Side_Collision : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag != "Controllable")
-            Destroy(col.gameObject);
+        
+             
 
         if(GameManager.instance.Is_Fever == false)
         {
@@ -22,5 +22,7 @@ public class Side_Collision : MonoBehaviour
                 GameOver.GetComponent<gameOver>().Gameover(); 
             }
         }
+        Destroy(col.gameObject);
+
     }
 }

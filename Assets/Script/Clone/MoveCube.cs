@@ -92,10 +92,7 @@ public class MoveCube : MonoBehaviour
         }
         
 
-        if (GameManager.instance.Get_Point >= AccelPoint[idx])
-        {
-            idx += 1;
-        }
+        
 
         
         if ((cubeBeforeNum < Begin2_4 || cubeBeforeNum > End2_4) && (cubeBeforeNum < Begin4_2 || cubeBeforeNum > End4_2))
@@ -152,6 +149,11 @@ public class MoveCube : MonoBehaviour
             
         }
 
+
+        if (GameManager.instance.Get_Point >= AccelPoint[idx])
+        {
+            idx += 1;
+        }
         worldCube.transform.position = Cubes[Random.Range(0, 3)].transform.position;
         StartPoint = worldCube.transform.position;
         cnt = 0;

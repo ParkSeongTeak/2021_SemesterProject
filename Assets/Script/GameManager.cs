@@ -58,7 +58,10 @@ public class GameManager : MonoBehaviour
         return max_Point;
     }
 
-
+    public void RE_Max_Point()
+    {
+        max_Point = 0;
+    }
     public void FeverStart()
     {
         Fever.GetComponent<FeverSystem>().FeverStart();

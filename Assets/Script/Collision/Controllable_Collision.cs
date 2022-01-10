@@ -7,10 +7,15 @@ public class Controllable_Collision : MonoBehaviour
 {
     GameObject PointText;
     GameObject GameOver;
+    public GameObject FeverEffect;
+
     const float Dtime = 0.5f;
     float timer = 0.0f;
     Vector3 current;
     Vector3 now;
+    Vector3 FeverEffectCorrentionLeft = new Vector3(-3, 0, 0);
+    Vector3 FeverEffectCorrentionRight = new Vector3(+3, 0 , 0);
+
     bool Physics = true;
     bool currentcheck = false;
 
@@ -175,21 +180,23 @@ public class Controllable_Collision : MonoBehaviour
     {
         if (this.gameObject.tag == "Controllable")
         {
+
+            //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
+            if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
+            {
+                col.gameObject.tag = "Second";
+                this.gameObject.tag = "First";
+                GameManager.instance.Get_Point++;
+                PointText.GetComponent<ShowPoint>().Print_Text();
+                GameManager.instance.firstHeight = this.gameObject.transform.position.y;
+
+            }
+
             SortColor();
             //피버상태가 아닐때의 함수들입니다.
             if (GameManager.instance.Is_Fever == false)
             {
-                //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
-                if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
-                {
-                    col.gameObject.tag = "Second";
-                    this.gameObject.tag = "First";
-                    GameManager.instance.Get_Point++;
-                    PointText.GetComponent<ShowPoint>().Print_Text();
-                    GameManager.instance.firstHeight = this.gameObject.transform.position.y;
-                    
-                }
-
+             
                 if(GameManager.instance.Get_Point == 5)
                 {
                     GameManager.instance.FeverStart();
@@ -204,14 +211,8 @@ public class Controllable_Collision : MonoBehaviour
             //피버상태일때의 함수입니다.
             else
             {
-                //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
-                if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
-                {
-                    col.gameObject.tag = "Second";
-                    this.gameObject.tag = "First";
-                    GameManager.instance.Get_Point++;
-                }
-                
+                Instantiate(FeverEffect, transform.position + FeverEffectCorrentionLeft, Quaternion.identity);
+                Instantiate(FeverEffect, transform.position + FeverEffectCorrentionRight, Quaternion.identity);
 
             }
         }
