@@ -769,6 +769,7 @@ MonoBehaviour:
   - {fileID: 1470342755}
   - {fileID: 2049237824}
   BeforeCube: {fileID: 0}
+  Twin: {fileID: 7736600327829164806, guid: 3f37ddd15cc70064dae4a5910899f46b, type: 3}
 --- !u!212 &147058062
 SpriteRenderer:
   m_ObjectHideFlags: 0

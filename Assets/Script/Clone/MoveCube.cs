@@ -12,9 +12,9 @@ public class MoveCube : MonoBehaviour
     public GameObject[] prefabCube;
     public GameObject[] Cubes;
     public GameObject BeforeCube;
-
+    public GameObject Twin;
     float[] xval = new float[5];
-    float Feverxval = 2.6f;
+    float Feverxval = 2.1f;
     int[] AccelPoint = new int[5];
     int idx = 0;
     
@@ -81,6 +81,16 @@ public class MoveCube : MonoBehaviour
         
         if (GameManager.instance.Is_Fever)                          //피버라면?
         {
+            if(Random.Range(0, 2) == 0)
+            {
+                cubeBeforeNum = 1;                                      //흰 컨테이너
+
+            }
+            else 
+            {
+                cubeBeforeNum = -1;                                      //흰 컨테이너
+            }
+
             if (GameManager.instance.FeverCubeCount < 20)
             {
                 GameManager.instance.FeverCubeCount += 1;
@@ -143,8 +153,8 @@ public class MoveCube : MonoBehaviour
         }
         else
         {
-
-            worldCube = Instantiate(prefabCube[cubeBeforeNum]);
+            if (cubeBeforeNum == -1) Instantiate(Twin);
+            else worldCube = Instantiate(prefabCube[cubeBeforeNum]);
             AfterDemolition = false;
             
         }

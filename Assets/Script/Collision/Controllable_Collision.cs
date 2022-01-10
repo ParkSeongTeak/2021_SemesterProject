@@ -8,6 +8,7 @@ public class Controllable_Collision : MonoBehaviour
     GameObject PointText;
     GameObject GameOver;
     public GameObject FeverEffect;
+    public GameObject TwinParant;
 
     const float Dtime = 0.5f;
     float timer = 0.0f;
@@ -20,6 +21,7 @@ public class Controllable_Collision : MonoBehaviour
     bool currentcheck = false;
 
     bool FeverEnd = false;
+    public bool IsTwin = false;
     //float R, G, B;
     bool Rup , Gup , Bup;
     SpriteRenderer spr;
@@ -180,42 +182,88 @@ public class Controllable_Collision : MonoBehaviour
     {
         if (this.gameObject.tag == "Controllable")
         {
-
-            //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
-            if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
+            if (!IsTwin)
             {
-                col.gameObject.tag = "Second";
-                this.gameObject.tag = "First";
-                GameManager.instance.Get_Point++;
-                PointText.GetComponent<ShowPoint>().Print_Text();
-                GameManager.instance.firstHeight = this.gameObject.transform.position.y;
-
-            }
-
-            SortColor();
-            //피버상태가 아닐때의 함수들입니다.
-            if (GameManager.instance.Is_Fever == false)
-            {
-             
-                if(GameManager.instance.Get_Point == 5)
+                //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
+                if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
                 {
-                    GameManager.instance.FeverStart();
-                }
-                if(GameManager.instance.Get_Point != 0 && GameManager.instance.Get_Point % 100 == 0)
-                {
-                    GameManager.instance.FeverStart();
-                }
-                
-            }
+                    col.gameObject.tag = "Second";
+                    this.gameObject.tag = "First";
+                    GameManager.instance.Get_Point++;
+                    PointText.GetComponent<ShowPoint>().Print_Text();
+                    GameManager.instance.firstHeight = this.gameObject.transform.position.y;
 
-            //피버상태일때의 함수입니다.
+                }
+
+                SortColor();
+                //피버상태가 아닐때의 함수들입니다.
+                if (GameManager.instance.Is_Fever == false)
+                {
+
+                    if (GameManager.instance.Get_Point == 5)
+                    {
+                        GameManager.instance.FeverStart();
+                    }
+                    if (GameManager.instance.Get_Point != 0 && GameManager.instance.Get_Point % 100 == 0)
+                    {
+                        GameManager.instance.FeverStart();
+                    }
+
+                }
+
+                //피버상태일때의 함수입니다.
+                else
+                {
+                    Instantiate(FeverEffect, transform.position + FeverEffectCorrentionLeft, Quaternion.identity);
+                    Instantiate(FeverEffect, transform.position + FeverEffectCorrentionRight, Quaternion.identity);
+
+                }
+            }
             else
             {
-                Instantiate(FeverEffect, transform.position + FeverEffectCorrentionLeft, Quaternion.identity);
-                Instantiate(FeverEffect, transform.position + FeverEffectCorrentionRight, Quaternion.identity);
+                if(TwinParant != null)
+                {
+                    //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
+                    if (col.gameObject.tag == "First" || col.gameObject.tag == "Second")
+                    {
+                        col.gameObject.tag = "Second";
+                        this.gameObject.tag = "First";
+                        TwinParant.GetComponent<ReTwinCollision>().UPCount();
 
+                        //GameManager.instance.Get_Point++;
+                        //PointText.GetComponent<ShowPoint>().Print_Text();
+                        //GameManager.instance.firstHeight = this.gameObject.transform.position.y;
+
+                    }
+
+                    SortColor();
+                    //피버상태가 아닐때의 함수들입니다.
+                    if (GameManager.instance.Is_Fever == false)
+                    {
+
+                        if (GameManager.instance.Get_Point == 5)
+                        {
+                            GameManager.instance.FeverStart();
+                        }
+                        if (GameManager.instance.Get_Point != 0 && GameManager.instance.Get_Point % 100 == 0)
+                        {
+                            GameManager.instance.FeverStart();
+                        }
+
+                    }
+
+                    //피버상태일때의 함수입니다.
+                    else
+                    {
+                        Instantiate(FeverEffect, transform.position + FeverEffectCorrentionLeft, Quaternion.identity);
+                        Instantiate(FeverEffect, transform.position + FeverEffectCorrentionRight, Quaternion.identity);
+
+                    }
+                }
             }
         }
+
+
     }
     
 }
