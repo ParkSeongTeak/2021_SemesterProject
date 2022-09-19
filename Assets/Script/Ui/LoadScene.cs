@@ -29,6 +29,8 @@ public class LoadScene : MonoBehaviour
         GameManager.instance.gameStop = false;
         SceneManager.LoadScene(exitScene);
         Time.timeScale = 1;
+
+        Application.Quit();
     }
 
 

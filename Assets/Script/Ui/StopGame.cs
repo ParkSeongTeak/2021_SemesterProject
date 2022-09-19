@@ -41,6 +41,8 @@ public class StopGame : MonoBehaviour
         SceneManager.LoadScene("StartScene");
         Time.timeScale = 1;
 
+
+        Application.Quit();
     }
     // Update is called once per frame
 

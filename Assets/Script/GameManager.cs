@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;         //이 클래스의 객체입니다. 우리는 이제부터 이 객체를 게임 매니저라고 생각하고 사용할 것입니다.
+    static GameManager _instance;         //이 클래스의 객체입니다. 우리는 이제부터 이 객체를 게임 매니저라고 생각하고 사용할 것입니다.
+    public static GameManager instance { get { Init(); return _instance; } }         //이 클래스의 객체입니다. 우리는 이제부터 이 객체를 게임 매니저라고 생각하고 사용할 것입니다.
+
     public GameObject Fever;
     public bool GameOver = false;               //게임이 오버되었는지 알아보는 부울값입니다.
     public int Get_Point = 0;                   //게임 실행할 때 나타날 포인트입니다.
@@ -27,17 +29,30 @@ public class GameManager : MonoBehaviour
     //PlayerPrefs
     string strMax_Point = "aenfl;sdkn4felknarvk8ld9fe";
 
+    static void Init()
+    {
+        if (_instance == null)
+        {
+            GameObject GM = GameObject.Find("GameManager");
+            if (GM == null)
+            {
+                GM = new GameObject { name = "GameManager" };
+                GM.AddComponent<GameManager>();
+
+            }
+
+            DontDestroyOnLoad(GM);
+            _instance = GM.GetComponent<GameManager>();
+            
+
+        }
+    }
+
     private void Awake()                        //Scene 이동을 하더라도 이 객체는 부서지지 않습니다. Scene 이동을 통해 어떤 식으로 객체가 부서지지 않는지 확인해봅시다. 
     {
-        var obj = FindObjectsOfType<GameManager>();
-        if (obj.Length == 1)
-        {
-            instance = this;
-            DontDestroyOnLoad(instance);        
-        }
-        else {
-            Destroy(this.gameObject);
-        }
+
+        Init();
+
         max_Point = PlayerPrefs.GetInt(strMax_Point, 0);
 
     }
