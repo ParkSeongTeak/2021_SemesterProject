@@ -19,7 +19,7 @@ public class LoadScene : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void ToExitScene()
+    public void ToExitScene()                       
     {
         GameManager.instance.Get_Point = 0;
         GameManager.instance.firstHeight = 0;
@@ -31,6 +31,7 @@ public class LoadScene : MonoBehaviour
         Time.timeScale = 1;
 
         Application.Quit();
+
     }
 
 
