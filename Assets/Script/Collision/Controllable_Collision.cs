@@ -182,6 +182,7 @@ public class Controllable_Collision : MonoBehaviour
     {
         if (this.gameObject.tag == "Controllable")
         {
+            StartCoroutine(TurnOffRigidbody2D());
             if (!IsTwin)
             {
                 //충돌체의 태그가 First일때, 각 태그가 First, Second로 바뀌며 점수를 획득합니다.
@@ -257,13 +258,18 @@ public class Controllable_Collision : MonoBehaviour
                     {
                         Instantiate(FeverEffect, transform.position + FeverEffectCorrentionLeft, Quaternion.identity);
                         Instantiate(FeverEffect, transform.position + FeverEffectCorrentionRight, Quaternion.identity);
-
+                        
                     }
                 }
             }
         }
-
-
     }
-    
+    static WaitForSeconds waitForSeconds = new WaitForSeconds(5);
+    IEnumerator TurnOffRigidbody2D()
+    {
+        yield return waitForSeconds;
+        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static; 
+        
+    }
+
 }
